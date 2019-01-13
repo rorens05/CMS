@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admins</h1><hr>
+<div class="jumbotron box-shadow ">
+    <div class="clear-fix">
+    <% @users.each do |user| %>
+      <div class="admin-box box-shadow row-margin white">
+        <div class="image">
+          <% if user.image.attachment.present? %>
+            <%= image_tag(user.image, style: "width:100%" ) %>
+          <% end %>
+        </div>
+        <h2><%= link_to user.first_name + ' ' + user.middle_name.chars.first + '. ' + user.last_name, user_path(user) %></h2>
+        <h4><%= user.email %></h4>
+      </div>
+    <% end %>
+    </div>
+  <br>
+
+  <%= link_to 'New Admin', new_user_path, class: "btn btn-primary btn-lg new-button"%>
+  
+</div>
+

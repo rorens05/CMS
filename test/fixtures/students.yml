@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  student_no: MyString
+  course: MyString
+  curriculum_year: MyString
+  year: 1
+  year_enrolled: 1
+
+two:
+  user_id: 1
+  student_no: MyString
+  course: MyString
+  curriculum_year: MyString
+  year: 1
+  year_enrolled: 1

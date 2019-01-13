@@ -1,0 +1,106 @@
+
+
+    <%= form_with(model: user, local: true) do |form| %>
+      <% if user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+        <% if @user.image.attachment.present? %>
+          <%= image_tag(user.image, class: "edit-image box-shadow") %>
+        <% end %>
+      <div class="form-group">
+        <%= form.label :image %>
+        <%= form.file_field :image, class: "form-control-file" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :username %>
+        <%= form.text_field :username, class: "form-control" %>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= form.label :password %>
+            <%= form.password_field :password, class: "form-control"  %>
+          </div>  
+        </div>
+        <div class="col-sm-6">        
+          <div class="form-group">
+            <%= form.label :password_confirmation %>
+            <%= form.password_field :password_confirmation, class: "form-control"  %>
+          </div>
+        </div>  
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">        
+          <div class="form-group">
+            <%= form.label :first_name %>
+            <%= form.text_field :first_name, class: "form-control"  %>
+          </div>
+        </div>
+        <div class="col-sm-4">        
+          <div class="form-group">
+            <%= form.label :last_name %>
+            <%= form.text_field :last_name, class: "form-control"  %>
+          </div>
+        </div> 
+        <div class="col-sm-4">        
+          <div class="form-group">
+            <%= form.label :middle_name %>
+            <%= form.text_field :middle_name, class: "form-control"  %>
+          </div>
+        </div>  
+      </div>      
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= form.label :email %>
+            <%= form.text_field :email, class: "form-control"  %>
+          </div>
+        </div>
+        <div class="col-sm-6">        
+          <div class="form-group">
+            <%= form.label :contact_no %>
+            <%= form.text_field :contact_no, class: "form-control"  %>
+          </div>         
+        </div>  
+      </div>
+
+      <div class="field hidden">
+        <%= form.label :user_type %>
+        <%= form.text_field :user_type, value: 'ADMIN' %>
+      </div>      
+
+
+      <div class="form-group">
+        <%= form.label :address  %>
+        <%= form.text_field :address, class: "form-control"  %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :gender %>
+        <%= form.select :gender, ['Male', 'Female'], {}, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :birthday %><br/>
+        <%= form.date_select :birthday,
+          {:order => [:day, :month, :year], :start_year => 1920, :end_year => Time.now.year },
+          {:class => "form-control date"} %>
+      </div>
+
+
+      <div class="actions">
+        <%= form.submit class: "btn btn-primary new-button"%>
+      </div>
+    <% end %>

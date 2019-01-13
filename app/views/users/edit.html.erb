@@ -1,0 +1,12 @@
+
+<h1>Editing User</h1><hr>
+
+<div class="jumbotron box-shadow new-form">
+  <h1>Edit <%= @user.first_name %></h1>
+  <div class="container">
+  
+    <%= render 'form', user: @user %>
+    <%= link_to 'Back', users_path, class: "btn btn-secondary new-button"%>
+
+  </div>
+</div>

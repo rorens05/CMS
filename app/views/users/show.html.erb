@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<div class="admin-details shadow ">
+  <div class="image box">
+    <% if @user.image.attachment.present? %>
+      <%= image_tag(@user.image, style: "width:100%") %>
+    <% end %>
+  </div>
+  <h1><%= @user.first_name %></h1>
+  <div class="details">
+
+    <p>
+      <strong>Username:</strong>
+      <%= @user.username %>
+    </p>
+
+    <p>
+      <strong>Name:</strong>
+      <%= format_name(@user.first_name,@user.middle_name,@user.last_name) %>
+    </p>
+
+    <p>
+      <strong>Email:</strong>
+      <%= @user.email %>
+      <strong>Contact no:</strong>
+      <%= @user.contact_no %>
+    </p>
+
+
+    <p>
+      <strong>Address:</strong>
+      <%= @user.address %>
+    </p>
+
+    <p>
+      <strong>Gender:</strong>
+      <%= @user.gender %> 
+      <strong>Birthday:</strong>
+      <%= @user.birthday %>
+    </p>
+<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-success" %> 
+<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"  %> 
+<%= link_to 'Back', users_path , class: "btn btn-info" %>
+  </div>
+    
+</div>

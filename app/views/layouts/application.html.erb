@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CMS</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h3 class="header"><span class="fa fa-dashboard icon head" aria-hidden="true"></span><span class="desc">SAMPLE</span></h3>
+      <ul class="">
+        <li><a href="#"><span class="fa fa-dashboard icon" aria-hidden="true"></span><span class="desc">DASHBOARD</span></a></li>
+        <li><a href="#"><span class="fa fa-users icon" aria-hidden="true"></span><span class="desc">Employees</span></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-stats icon" aria-hidden="true"></span><span class="desc">Attendance</span></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-briefcase icon" aria-hidden="true"></span><span class="desc">Leave</span></a></li>
+        <li><a href="#"><span class="fa fa-money icon" aria-hidden="true"></span><span class="desc">Payroll</span></a></li>
+        <li><a href="#"><span class="fa fa-area-chart icon" aria-hidden="true"></span><span class="desc">Summary</span></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user icon" aria-hidden="true"></span><span class="desc">Admins</span></a></li>
+      </ul>
+    </div>
+    <div class="content ">
+      <div class="header">
+        <h3 class="notification"><span class="fa fa-user"> Welcome Admin</h3>
+      </div> 
+    </div>
+  
+
+
+  </body>
+</html>
