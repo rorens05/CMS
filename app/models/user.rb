@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :image, presence: true
   validates :email, presence: true
+  validates :type, presence: true
 
   scope :admins, lambda {where(user_type: "ADMIN")}
   scope :students, lambda {where(user_type: "STUDENT")}
