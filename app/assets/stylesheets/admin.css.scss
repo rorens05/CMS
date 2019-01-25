@@ -154,6 +154,11 @@ table.index-table tr,table.index-table th, table.index-table td{
   overflow: auto;
 }
 
+.no-radius{
+  border-radius: 0px !important;
+  overflow: auto;
+}
+
 .admin-box h2{
   background-color: #0F97DE;
   width: auto;
@@ -268,9 +273,60 @@ table.index-table tr,table.index-table th, table.index-table td{
   margin: 0 auto;
 }
 
+.index{
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
 
+.index th{
+  color: white;
+  background-color: #0F97DE
+}
 
+.index th, .index td{
+  border: 1px solid gray;
+  padding: 5px 15px;
+}
 
+.index td{
+  font-size: 16px;
+}
+
+.show{
+  margin-top: 20px !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.show h1{
+  background-color: #0F97DE;
+  padding: 5px;
+  color: white;
+}
+
+.show p{
+  font-size: large;
+  
+}
+
+.show .info{
+  border: 1px solid gray;
+  background-color: white;
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  box-shadow: 5px 5px 2px gray;
+}
+
+.form{
+  margin: 20px;
+}
+
+.date{
+  display: inline-block !important;
+}
 
 
 
@@ -335,5 +391,4 @@ table.index-table tr,table.index-table th, table.index-table td{
     font-size: 15px
   }
 }
-
 

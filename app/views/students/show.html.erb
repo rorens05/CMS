@@ -1,0 +1,102 @@
+<div class="jumbotron show">
+<h1>Student Information</h1>
+<p id="notice"><%= notice %></p>
+
+<% if @student.image.attachment.present? %>
+  <%= image_tag(@student.image, class: "edit-image box-shadow") %>
+<% end %>
+
+  <div class="info">
+
+    <p>
+      <strong>Student no:</strong>
+      <%= @student.student_no %>
+    </p>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <p>
+          <strong>First name:</strong>
+          <%= @student.first_name %>
+        </p>      
+      </div>
+
+      <div class="col-lg-4">
+        <p>
+          <strong>Middle name:</strong>
+          <%= @student.middle_name %>
+        </p>      
+      </div>
+
+      <div class="col-lg-4">
+        <p>
+          <strong>Last name:</strong>
+          <%= @student.last_name %>
+        </p>      
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <p>
+          <strong>Email:</strong>
+          <%= @student.email %>
+        </p>
+      </div>
+      <div class="col-sm-8">
+        <p>
+          <strong>Contact no:</strong>
+          <%= @student.contact_no %>
+        </p>
+      </div>
+    </div>
+
+      <p>
+        <strong>Address:</strong>
+        <%= @student.address %>
+      </p>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <p>
+          <strong>Curriculum year:</strong>
+          <%= @student.curriculum_year %>
+        </p>    
+      </div>
+
+      <div class="col-lg-4">
+        <p>
+          <strong>Year:</strong>
+          <%= @student.year %>
+        </p>
+      </div>
+
+      <div class="col-lg-4">
+        <p>
+          <strong>Course:</strong>
+          <%= @student.course %>
+        </p>
+      </div>
+    </div>
+
+    <p>
+      <strong>Year enrolled:</strong>
+      <%= @student.year_enrolled %>
+    </p>
+
+    <p>
+      <strong>Gender:</strong>
+      <%= @student.gender %>
+    </p>
+
+    <p>
+      <strong>Birthday:</strong>
+      <%= @student.birthday %>
+    </p>
+
+    <%= link_to 'Edit', edit_student_path(@student), class: "btn btn-success new-button" %> 
+    <%= link_to 'Destroy', @student, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger new-button" %>  
+    <%= link_to 'Back', students_path, class: "btn btn-secondary new-button" %>
+
+    </div>
+</div>

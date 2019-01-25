@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Students</h1><hr>
+
+<div class="jumbotron no-radius">
+  <table class="index">
+    <thead>
+      <tr>
+        <th>Student no</th>
+        <th>Name</th>
+        <th>Contact no</th>
+        <th>Year</th>
+        <th>Course</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= student.student_no %></td>
+          <td><%= link_to student.name , student %></td>
+          <td><%= student.contact_no %></td>
+          <td><%= student.year %></td>
+          <td><%= student.course %></td>
+          <td><%= student.gender %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Student', new_student_path %>
+</div>

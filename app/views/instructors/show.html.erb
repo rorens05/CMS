@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @instructor.username %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @instructor.password_digest %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @instructor.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @instructor.email %>
+</p>
+
+<p>
+  <strong>Contact no:</strong>
+  <%= @instructor.contact_no %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @instructor.address %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @instructor.gender %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @instructor.birthday %>
+</p>
+
+<p>
+  <strong>Other information:</strong>
+  <%= @instructor.other_information %>
+</p>
+
+<%= link_to 'Edit', edit_instructor_path(@instructor) %> |
+<%= link_to 'Back', instructors_path %>
