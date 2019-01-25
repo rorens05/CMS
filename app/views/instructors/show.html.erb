@@ -1,18 +1,22 @@
 <p id="notice"><%= notice %></p>
 
+<% if @instructor.image.attachment.present? %>
+  <%= image_tag(@instructor.image, class: "edit-image box-shadow") %>
+<% end %>
+
 <p>
   <strong>Username:</strong>
   <%= @instructor.username %>
 </p>
 
 <p>
-  <strong>Password digest:</strong>
-  <%= @instructor.password_digest %>
+  <strong>Name:</strong>
+  <%= @instructor.name %>
 </p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @instructor.name %>
+  <strong>Position:</strong>
+  <%= @instructor.position %>
 </p>
 
 <p>

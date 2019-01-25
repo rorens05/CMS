@@ -11,19 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </div>
+  <% if @instructor.image.attachment.present? %>
+    <%= image_tag(@instructor.image, class: "edit-image box-shadow") %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :password_digest %>
-    <%= form.text_field :password_digest %>
+  <div class="form-group">
+    <%= form.label :image %>
+    <%= form.file_field :image, class: "form-control-file" %>
   </div>
 
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :position %>
+    <%= form.text_field :position %>
+  </div>
+
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.text_field :username %>
   </div>
 
   <div class="field">

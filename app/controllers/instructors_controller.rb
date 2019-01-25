@@ -1,6 +1,8 @@
 class InstructorsController < ApplicationController
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
 
+  layout "admin"
+
   # GET /instructors
   # GET /instructors.json
   def index
@@ -15,6 +17,7 @@ class InstructorsController < ApplicationController
   # GET /instructors/new
   def new
     @instructor = Instructor.new
+    
   end
 
   # GET /instructors/1/edit
@@ -25,6 +28,9 @@ class InstructorsController < ApplicationController
   # POST /instructors.json
   def create
     @instructor = Instructor.new(instructor_params)
+    @instructor.password = @instructor.username
+    @instructor.password_confirmation = @instructor.username
+    
 
     respond_to do |format|
       if @instructor.save
@@ -69,6 +75,6 @@ class InstructorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instructor_params
-      params.require(:instructor).permit(:username, :password_digest, :name, :email, :contact_no, :address, :gender, :birthday, :other_information)
+      params.require(:instructor).permit(:username, :name, :email, :contact_no, :address, :gender, :birthday, :other_information, :image, :position)
     end
 end
