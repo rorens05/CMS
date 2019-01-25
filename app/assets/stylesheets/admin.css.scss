@@ -382,11 +382,59 @@ table.index-table tr,table.index-table th, table.index-table td{
 
 
 
+.instructor-info{
+  border: 2px solid rgb(187, 187, 187);
+  position: relative;
+  overflow: hidden;
+}
 
+.instructor-header{
+  padding: 0;
+  margin: 0;
+  background-color: #0F97DE;
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  z-index: -1;
+  
+}
 
+.instructor-info .image-container{
+  width: 400px;
+  padding: 20px;
+  float: left  
+}
 
+.instructor-info .image-container img{
+  width: 100%;
+  border: 5px solid white;
+}
 
+.info-container{
+  margin: 100px 0 0 0;
+  width: 200%;
+}
 
+.info-container p strong{
+  margin-left: 20px;
+}
+
+.instructor-name{
+  font-size: 45px;
+  color: black;
+}
+
+.instructor-position{
+  font-size: 25px;
+  color: black;
+  margin-top: -15px;
+  color: #0F97DE;
+  text-indent: 1em;
+}
+
+.info-container table, .info-container th, .info-container td{
+  padding: 0 20px;
+}
 
 
 
@@ -415,6 +463,20 @@ table.index-table tr,table.index-table th, table.index-table td{
   .header form{
     display: none;
   }
+
+  .info-container{
+    float: left;
+    margin: 0 20px;
+    width: 100%;
+  }
+
+
+.instructor-name{
+  font-size: 30px;
+  color: black;
+}
+
+
 }
 
 
@@ -443,6 +505,16 @@ table.index-table tr,table.index-table th, table.index-table td{
 
   .instructor-container h4{
     font-size: 20px;
+  }
+
+  .instructor-info .image-container{
+    width: 100%;
+    padding: 20px;
+    float: left  
+  }
+
+  .info-container p strong{
+    margin-left: 0;
   }
 }
 

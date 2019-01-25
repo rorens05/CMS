@@ -1,53 +1,69 @@
+<h1>Instructor Information</h1><hr>
 <p id="notice"><%= notice %></p>
 
-<% if @instructor.image.attachment.present? %>
-  <%= image_tag(@instructor.image, class: "edit-image box-shadow") %>
-<% end %>
+<div class="instructor-info">
 
-<p>
-  <strong>Username:</strong>
-  <%= @instructor.username %>
-</p>
+  <div class="instructor-header"></div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @instructor.name %>
-</p>
+  <div class="image-container">
+    <% if @instructor.image.attachment.present? %>
+      <%= image_tag(@instructor.image, class: " box-shadow") %>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Position:</strong>
-  <%= @instructor.position %>
-</p>
+  <div class="info-container">     
 
-<p>
-  <strong>Email:</strong>
-  <%= @instructor.email %>
-</p>
+    <p class="instructor-name">
+      <%= @instructor.name %>
+    </p>
 
-<p>
-  <strong>Contact no:</strong>
-  <%= @instructor.contact_no %>
-</p>
+    <p class="instructor-position">
+      <%= @instructor.email %> ~ <%= @instructor.position %>
+    </p><hr>
 
-<p>
-  <strong>Address:</strong>
-  <%= @instructor.address %>
-</p>
+    <table>
+      <tr>
+        <th>Username:</th>
+        <td><%= @instructor.username %></td>
+        <th colspan="1">Other Information:</th>
+        <td rowspan="2" style="vertical-align: top; text-align: left;"><%= @instructor.other_information %></td>
+      </tr>
+      <tr>
+        <th>Contact no:</th>
+        <td><%= @instructor.contact_no %></td>
+        <td></td>
+        
+      </tr>
+      <tr>
+        <th>Address:</th>
+        <td><%= @instructor.address %></td>
+      </tr>
+      <tr>
+        <th>Gender:</th>
+        <td><%= @instructor.gender %></td>
+      </tr>
+      <tr>
+        <th>Birthday:</th>
+        <td><%= @instructor.birthday %></td>
+      </tr>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @instructor.gender %>
-</p>
+      <tr>
+        <th colspan="4">
+          <%= link_to 'Edit', edit_instructor_path(@instructor), class: "btn btn-primary new-button" %> 
+          <%= link_to 'Destroy', @instructor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger new-button" %>  
+          <%= link_to 'Reset Password', edit_instructor_path(@instructor), class: "btn btn-info new-button" %> 
+          <%= link_to 'Back', instructors_path, class: "btn btn-secondary new-button" %></th>
+        <th>
+          
+      </th>
+      </tr>
+    </table>
+    
 
-<p>
-  <strong>Birthday:</strong>
-  <%= @instructor.birthday %>
-</p>
 
-<p>
-  <strong>Other information:</strong>
-  <%= @instructor.other_information %>
-</p>
+  </div>
 
-<%= link_to 'Edit', edit_instructor_path(@instructor) %> |
-<%= link_to 'Back', instructors_path %>
+ 
+
+
+</div>
