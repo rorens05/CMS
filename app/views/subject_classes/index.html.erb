@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Classes</h1><hr>
+
+<div class="jumbotron no-radius">
+  <table class="index">
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Instructor</th>
+        <th>Schedule</th>
+        <th>Room</th>
+        <th>Block</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @subject_classes.each do |subject_class| %>
+        <tr>
+          <td><%= link_to "(" + subject_class.subject.subject_code + ") " + subject_class.subject.name, subject_path(subject_class.id) %></td>
+          <td><%= link_to subject_class.instructor.name, instructor_path(subject_class.instructor.id)  %></td>
+          <td><%= subject_class.schedule %></td>
+          <td><%= subject_class.room %></td>
+          <td><%= subject_class.block %></td>
+          <td><%= link_to 'Show', subject_class %></td>
+          <td><%= link_to 'Edit', edit_subject_class_path(subject_class) %></td>
+          <td><%= link_to 'Destroy', subject_class, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Subject Class', new_subject_class_path, class: "btn btn-primary new-button" %>
+</div>

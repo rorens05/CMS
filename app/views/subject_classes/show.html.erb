@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<table class="info-table-class">
+  <tr>
+    <th>Subject: </th>
+    <td><%= link_to "(" + @subject_class.subject.subject_code + ") " + @subject_class.subject.name, subject_path(@subject_class.id) %></td>
+  </tr>
+  <tr>
+    <th>Instructor:</th>
+    <td><%= @subject_class.instructor.name %></td>
+  </tr>
+  <tr>
+    <th>Schedule:</th>
+    <td><%= @subject_class.schedule %></td>
+  </tr>
+  <tr>
+    <th>Room:</th>
+    <td><%= @subject_class.room %></td>
+  </tr>
+  <tr>
+    <th>Block:</th>
+    <td><%= @subject_class.block %></td>
+  </tr>
+  <tr>
+    <th>School year:</th>
+    <td><%= @subject_class.school_year %></td>
+  </tr>
+  <tr>
+    <th>Sem:</th>
+    <td><%= @subject_class.sem %></td>
+  </tr>
+</table>
+
+<%= link_to 'Edit', edit_subject_class_path(@subject_class) %> |
+<%= link_to 'Back', subject_classes_path %>

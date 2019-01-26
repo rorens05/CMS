@@ -237,6 +237,7 @@ table.index-table tr,table.index-table th, table.index-table td{
 
 .new-button{
   color: white !important;
+  margin-bottom: 20px !important;
 }
 
 .new-form{
@@ -315,9 +316,14 @@ table.index-table tr,table.index-table th, table.index-table td{
   background-color: white;
   padding: 20px;
   width: 100%;
-  max-width: 800px;
+  max-width: 1500px;
   margin: 20px auto;
   box-shadow: 5px 5px 2px gray;
+  overflow: auto;
+}
+
+.show .info th, .show .info td{
+  padding: 5px 15px
 }
 
 .form{
@@ -458,8 +464,20 @@ table.index-table tr,table.index-table th, table.index-table td{
   margin: 25px;
 }
 
+.info-table-class th, .info-table-class td{
+  padding: 0 10px;
+}
 
+.student-image{
+  width: 200px;
+  height: 200px;
+  float: left;
+  margin: 0 15px;
+}
 
+.student-image img{
+  width:100%
+}
 
 
 

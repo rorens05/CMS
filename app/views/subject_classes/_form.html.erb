@@ -1,0 +1,62 @@
+<%= form_with(model: subject_class, local: true) do |form| %>
+  <% if subject_class.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(subject_class.errors.count, "error") %> prohibited this subject_class from being saved:</h2>
+
+      <ul>
+      <% subject_class.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :subject_id %>
+    <%= form.select :subject_id, options_from_collection_for_select(@subjects, :id, :name, subject_class.subject ? subject_class.subject.id : "1") %>
+  </div>
+
+  <div class="field">
+    <%= form.label :instructor_id %>
+    <%= form.select :instructor_id, options_from_collection_for_select(@instructors, :id, :name, subject_class.instructor ? subject_class.instructor.id : "1") %>
+  </div>
+
+  <div class="field">
+    <%= form.label :days %>
+    <%= form.text_field :days %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time %>
+    <%= form.time_select :start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_time %>
+    <%= form.time_select :end_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :room %>
+    <%= form.text_field :room %>
+  </div>
+
+  <div class="field">
+    <%= form.label :block %>
+    <%= form.number_field :block %>
+  </div>
+
+  <div class="field">
+    <%= form.label :school_year %>
+    <%= form.text_field :school_year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sem %>
+    <%= form.text_field :sem %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
