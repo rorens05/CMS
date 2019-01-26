@@ -3,6 +3,11 @@
 <h1>Students</h1><hr>
 
 <div class="jumbotron no-radius">
+  <span>Import Students</span>
+  <%= form_tag import_students_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "import" %>
+  <% end %>
   <table class="index">
     <thead>
       <tr>
@@ -32,4 +37,5 @@
   <br>
 
   <%= link_to 'New Student', new_student_path %>
+  
 </div>

@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    @students = Student.order(:year).order(:name)
   end
 
   # GET /students/1
@@ -63,6 +63,11 @@ class StudentsController < ApplicationController
       format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    notice = Student.import(params[:file])
+    redirect_to students_path, notice: notice
   end
 
   private
