@@ -464,6 +464,10 @@ table.index-table tr,table.index-table th, table.index-table td{
   margin: 25px;
 }
 
+.info-table-class{
+  margin-top: 10px;
+}
+
 .info-table-class th, .info-table-class td{
   padding: 0 10px;
 }
@@ -503,7 +507,7 @@ table.index-table tr,table.index-table th, table.index-table td{
   position: relative;
   overflow: hidden;
   width: 200px;
-  height: 200px;
+  height: 220px;
   border-radius: 5px;
   border: 1px solid rgb(255, 255, 255);
   box-shadow: 5px 5px 5px gray;
@@ -539,7 +543,38 @@ table.index-table tr,table.index-table th, table.index-table td{
   color: rgb(126, 126, 126)
 }
 
+.classes-show{
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgb(179, 179, 179);
+  box-shadow: 5px 5px 5px gray
+}
+.classes-show .class-header{
+  width: 100%;
+  height: 100px;
+  position:absolute;
+  background-color: #0F97DE;
+  z-index: -1;
+}
 
+.class-image{
+  width: 200px;
+  margin: 20px;
+  float: left;
+  text-align: center;
+}
+
+.classes-show .class-name{
+  margin-top: 50px;
+  a{
+    font-size: 30px;
+    color: white
+  }
+}
+
+.class-image img{
+  width: 100%;
+}
 
 
 

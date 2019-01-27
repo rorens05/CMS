@@ -7,8 +7,9 @@
         <div class="icon"><%= image_tag c.instructor.image.variant(resize: "60x60") %><br/></div>        
       <% end %>      
       <p><strong><%= link_to c.subject.subject_code , c %></strong></p>
-      <p><%= c.subject.name %></p>
+      <p><small style="color: black"><%= c.subject.name %></small></p>
       <p><small><%= c.schedule %></small></p>
+      <p><small><%= "Block" + c.block.to_s %></small></p>
     </div>
   <% end %>
 </div>

@@ -13,10 +13,8 @@
       <tr>
         <th>Student no</th>
         <th>Name</th>
-        <th>Contact no</th>
         <th>Year</th>
         <th>Course</th>
-        <th>Gender</th>
       </tr>
     </thead>
 
@@ -25,10 +23,8 @@
         <tr>
           <td><%= student.student_no %></td>
           <td><%= link_to student.name , student %></td>
-          <td><%= student.contact_no %></td>
           <td><%= student.year %></td>
           <td><%= student.course %></td>
-          <td><%= student.gender %></td>
         </tr>
       <% end %>
     </tbody>
