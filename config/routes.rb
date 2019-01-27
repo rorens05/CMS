@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :subject_classes
+  resources :subject_classes do
+    post :add_student, on: :member
+    post :remove_student, on: :member
+  end
   resources :subjects
   resources :instructors
   resources :students do 

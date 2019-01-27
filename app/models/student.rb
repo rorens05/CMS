@@ -4,7 +4,9 @@ class Student < ApplicationRecord
   has_secure_password
   has_one_attached :image
   
-
+  has_many :class_enrollments
+  has_many :subject_classes, through: :class_enrollments
+  
 
   def self.import(file)
     spreadsheet = open_spreadsheet(file)

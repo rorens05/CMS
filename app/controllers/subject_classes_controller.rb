@@ -1,5 +1,5 @@
 class SubjectClassesController < ApplicationController
-  before_action :set_subject_class, only: [:show, :edit, :update, :destroy]
+  before_action :set_subject_class, only: [:show, :edit, :update, :destroy, :add_student, :remove_student]
 
   layout 'admin'
 
@@ -12,6 +12,7 @@ class SubjectClassesController < ApplicationController
   # GET /subject_classes/1
   # GET /subject_classes/1.json
   def show
+    @students = Student.all.order("name")
   end
 
   # GET /subject_classes/new
@@ -65,6 +66,27 @@ class SubjectClassesController < ApplicationController
       format.html { redirect_to subject_classes_url, notice: 'Subject class was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+
+  def add_student
+    student = Student.find(params[:student_id])
+    
+    if @subject_class.students.where(id: student.id).size == 0    
+      @subject_class.students << student
+      redirect_to @subject_class, notice: "added successfully"
+    else
+      redirect_to @subject_class, notice: student.name + " is already belongs to the class"
+    end
+    
+    
+  end
+
+  def remove_student
+    student = Student.find(params[:student_id])
+    subject_enrolled = ClassEnrollment.all.where(student_id: student.id, subject_class_id: @subject_class.id).first
+    subject_enrolled.destroy
+    redirect_to @subject_class, notice: subject_enrolled.student.name + " was removed from " + subject_enrolled.subject_class.subject.name + " class"
   end
 
   private

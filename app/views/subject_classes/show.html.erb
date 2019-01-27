@@ -36,8 +36,47 @@
   <%= link_to 'Back', subject_classes_path %>
   <hr>
   <div class="student-list">
-  
-  
+    <h3>Students</h3>
+    <%= form_tag(add_student_subject_class_path(@subject_class)) do -%>
+      <select name="student_id" id="student_id">
+        <% @students.each do |student| %>
+          <option value="<%= student.id %>"> <%= student.student_no + " : " + student.name %> </option>
+        <% end %>
+      </select>
+      <%= submit_tag 'Add' %>
+    <% end -%>
+
+      <table class="index">
+        <tr>
+          <th>Student no</th>
+          <th>Name</th>
+          <th>Course</th>
+          <th>Year</th>    
+          <th>Action</th>    
+                
+        </tr>
+          <% if @subject_class.students.count == 0 %>
+            <tr><td colspan="4">NO STUDENTS</td></tr>
+          <% else %>
+          
+            <% @subject_class.students.each do |student| %>
+            <tr>
+              <td><%= student.student_no %></td>
+              <td><%= link_to student.name, student %></td>
+              <td><%= student.course %></td>
+              <td><%= student.year %></td>
+              <td>
+               <%= form_tag(remove_student_subject_class_path(@subject_class)) do -%>
+                  <input type="hidden" name="student_id" value="<%= student.id %>">
+                  <%= submit_tag 'Remove from Class' %>
+                <% end -%>
+              </td>
+            </tr>
+              
+            <% end %>
+          
+          <% end %>
+      </table>
   </div>
 </div>
 
