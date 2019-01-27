@@ -479,6 +479,65 @@ table.index-table tr,table.index-table th, table.index-table td{
   width:100%
 }
 
+.instructor-classes{
+  width: 100%;
+  padding: 20px;
+  overflow: auto;
+}
+
+.class-list{
+  padding: 20px 0;
+}
+
+.class-list .blue-header{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #0F97DE;
+  z-index: -1;
+  position:absolute;
+}
+
+.class-list .class-container{
+  position: relative;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: 5px 5px 5px gray;
+  background-color: #effbff;
+  z-index: 2;
+  text-align: center;
+  float: left;
+  margin: 10px;
+}
+
+.class-list .icon{
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  margin: 10px;
+  border-radius: 30px;
+  border: 2px solid white
+}
+
+.class-list img{
+  width: 100%;
+}
+
+.class-list p{
+  margin:0;
+}
+.class-list strong{
+  font-size: 20px;
+  z-index: 2;
+}
+
+.class-list small{
+  color: rgb(126, 126, 126)
+}
 
 
 

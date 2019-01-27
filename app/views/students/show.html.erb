@@ -4,11 +4,12 @@
 
 
   <div class="info">
-    <div class="student-image box-shadow">
-      <% if @student.image.attachment.present? %>
-        <%= image_tag(@student.image) %>
-      <% end %>    
-    </div>
+    <% if @student.image.attachment.present? %>
+      <div class="student-image box-shadow">
+        <%= image_tag(@student.image) %> 
+      </div>
+    <% end %>   
+
 
     <table>
       <tr>
@@ -17,11 +18,7 @@
       </tr>
       <tr>
         <th>Last name:</th>
-        <td><%= @student.last_name %></td>
-        <th>First name:</th>
-        <td><%= @student.first_name %></td>
-        <th>Middle name:</th>
-        <td><%= @student.middle_name %></td>
+        <td><%= @student.name %></td>
       </tr>
       <tr>
         <th>Course:</th>
@@ -29,21 +26,21 @@
         <th>Year:</th>
         <td><%= @student.year %></td>
         <th>Curriculum Year:</th>
-        <td><%= @student.curriculum_year %></td>
+        <td><%= @student.curriculum_year ? @student.curriculum_year : "NA" %></td>
       </tr>
       <tr>
         <th>Gender:</th>
-        <td><%= @student.gender %></td>
+        <td><%= @student.gender ? @student.gender : "NA"%></td>
         <th>Email:</th>
-        <td><%= @student.email %></td>
+        <td><%= @student.email ? @student.email : "NA" %></td>
         <th>Contact no:</th>
-        <td><%= @student.contact_no %></td>
+        <td><%= @student.contact_no ? @student.contact_no : "NA" %></td>
       </tr>
       <tr>
         <th>Birthday:</th>
-        <td><%= @student.birthday %></td>
+        <td><%= @student.birthday ? @student.birthday : "NA" %></td>
         <th>Year Enrolled:</th>
-        <td><%= @student.year_enrolled %></td>
+        <td><%= @student.year_enrolled ? @student.year_enrolled : "NA" %></td>
       </tr>    
       <tr>
       </tr>

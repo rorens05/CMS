@@ -12,12 +12,13 @@ class InstructorsController < ApplicationController
   # GET /instructors/1
   # GET /instructors/1.json
   def show
+    @school_years = SubjectClass.distinct.pluck(:school_year)
+    @subject_classes = @instructor.subject_classes
   end
 
   # GET /instructors/new
   def new
     @instructor = Instructor.new
-    
   end
 
   # GET /instructors/1/edit

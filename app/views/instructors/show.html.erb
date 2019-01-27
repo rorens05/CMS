@@ -1,9 +1,9 @@
 <h1>Instructor Information</h1><hr>
 <p id="notice"><%= notice %></p>
 
-<div class="instructor-info">
+<div class="instructor-info ">
 
-  <div class="instructor-header"></div>
+  <div class="instructor-header "></div>
 
   <div class="image-container">
     <% if @instructor.image.attachment.present? %>
@@ -58,12 +58,14 @@
       </th>
       </tr>
     </table>
-    
-
-
-  </div>
-
+  </div><hr>
  
+  <div class="instructor-classes">
+
+    <h3>Classes</h3>
+    <%= select_tag :school_year, options_for_select(@school_years, @school_year) %>
+    <%= render partial: 'subject_classes/display_classes', locals: {classes: @subject_classes} %>
+  </div>
 
 
 </div>

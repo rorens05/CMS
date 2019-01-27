@@ -44,6 +44,7 @@ gem 'awesome_print', '~> 1.8'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'bcrypt', '~> 3.1.7'
 gem 'roo'
+gem "mini_magick"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
