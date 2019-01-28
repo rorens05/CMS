@@ -90,34 +90,7 @@ class SubjectClassesController < ApplicationController
   end
 
   def attendances
-    @attendances = @subject_class.attendances
-  end
-
-  def new_attendance
-    @attendance = Attendance.new
-  end
-
-  def create_attendance
-    a = Attendance.new(date_created: params[:date], comments: params[:comment])
-    a.subject_class = @subject_class
-    if 1 == 2
-      redirect_to attendances_subject_class_path, notice: "Attendance Added"
-    else
-      redirect_to attendances_subject_class_path, notice: Date.parse(params[:date]).to_s
-    end
-
-  end
-
-  def edit_attendance
-
-  end
-
-  def update_attendance
-
-  end
-
-  def destroy_attendance
-
+    
   end
 
 

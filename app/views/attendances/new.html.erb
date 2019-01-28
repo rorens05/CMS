@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<div class="classes-show no-radius">
+  <%= render partial: 'subject_classes/class_details', locals: {subject_class: @subject_class} %><hr>
+
+  <div class="student-list">
+    <h3>New Attendance</h3>
+
+    <%= render 'form', attendance: @attendance %>
+
+  </div>
+</div>

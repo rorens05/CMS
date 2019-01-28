@@ -29,7 +29,7 @@
             <tr><td colspan="4">NO STUDENTS</td></tr>
           <% else %>
           
-            <% @subject_class.students.each do |student| %>
+            <% @subject_class.students.order(:name).each do |student| %>
             <tr>
               <td><%= student.student_no %></td>
               <td><%= link_to student.name, student %></td>

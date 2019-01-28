@@ -580,6 +580,50 @@ table.index-table tr,table.index-table th, table.index-table td{
   margin: 20px
 }
 
+.attendance{
+  text-decoration: none;
+  color: black;
+  h6{
+    text-align: center
+  }
+  p{
+    text-align: center;
+    color: gray;
+    font-size: small
+  }
+}
+
+.attendance:hover{
+  text-decoration: none;
+  color: black;
+}
+.attendance div{
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+  border: 1px solid rgb(175, 224, 250);
+  box-shadow: 4px 4px 4px gray;
+  float:left;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.attendance h2{
+  text-align: center;
+  background-color: #0F97DE;
+  color:white;
+  padding-top:8px;
+}
+
+.attendance div:hover{
+  transform: scale(1.2);
+
+  h2{
+  }
+  
+}
+
+
 
 
 

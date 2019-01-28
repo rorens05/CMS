@@ -1,9 +1,9 @@
 class CreateAttendances < ActiveRecord::Migration[5.2]
   def change
     create_table :attendances do |t|
-      t.integer :subject_class_id
       t.date :date_created
-      t.string :comments
+      t.text :comment
+      t.integer :subject_class_id
 
       t.timestamps
     end

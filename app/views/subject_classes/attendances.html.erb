@@ -5,6 +5,15 @@
   <hr>
   <div class="student-list">
     <h3>Attendance</h3>
-    <%= link_to 'New Attendance', new_attendance_subject_class_path %>
-
+    <%= link_to 'New Attendance', new_attendance_path(subject_class_id: @subject_class.id), class: "btn btn-primary new-button" %><br/>
+    <% @subject_class.attendances.order(:date_created).each do |attendance| %>
+      <a href="<%= attendance_path(attendance) %>" class="attendance">
+        <div>
+          <h2><%= attendance.date_created.strftime("%b %e") %><br/><%= attendance.date_created.strftime("%A") %></h2>
+          <h6><%= attendance.date_created.strftime("%b %e, %Y") %></h6>
+          <p><%= attendance.comment %><br/></p>
+        </div>
+      </a>
+           
+    <% end %>
 </div>

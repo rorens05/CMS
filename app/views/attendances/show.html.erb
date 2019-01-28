@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<div class="classes-show no-radius">
+  <%= render partial: 'subject_classes/class_details', locals: {subject_class: @attendance.subject_class} %><hr>
+
+  <div class="student-list">
+    <h3><%= @attendance.date_created.strftime("%A %B %e, %Y") %></h3>
+    <p>
+      <strong>Comment:</strong>
+      <%= @attendance.comment %>
+    </p>
+
+    <%= link_to 'Edit', edit_attendance_path(@attendance), class: "btn btn-success new-button" %> 
+    <%= link_to 'Destroy', @attendance, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger new-button" %>
+
+  </div>
+</div>
+

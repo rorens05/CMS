@@ -2,7 +2,7 @@
   <% if subject_class.instructor.image %>
     <div class="class-image">
       <%= image_tag subject_class.instructor.image %>
-    <%= subject_class.instructor.name %>
+      <%= link_to subject_class.instructor.name, subject_class.instructor %>
     </div>
   <% end %>
   <div class="class-name"><%= link_to "(" + subject_class.subject.subject_code + ") " + subject_class.subject.name, subject_path(subject_class.id) %></div>
@@ -32,6 +32,6 @@
   <%= link_to 'Edit', edit_subject_class_path(subject_class) %> |
   <%= link_to 'Home', subject_class %> |
   <%= link_to 'Attendance', attendances_subject_class_path(subject_class) %> |
-  <%= link_to 'Tests', edit_subject_class_path(subject_class) %> |
-  <%= link_to 'Summary', edit_subject_class_path(subject_class) %> 
+  <%= link_to 'Tests', "#" %> |
+  <%= link_to 'Summary', "#" %> 
   
