@@ -1,5 +1,5 @@
 class SubjectClassesController < ApplicationController
-  before_action :set_subject_class, only: [:show, :edit, :update, :destroy, :add_student, :remove_student]
+  before_action :set_subject_class, only: [:show, :edit, :update, :destroy, :add_student, :remove_student, :attendances, :new_attendance, :create_attendance]
 
   layout 'admin'
 
@@ -89,6 +89,39 @@ class SubjectClassesController < ApplicationController
     redirect_to @subject_class, notice: subject_enrolled.student.name + " was removed from " + subject_enrolled.subject_class.subject.name + " class"
   end
 
+  def attendances
+    @attendances = @subject_class.attendances
+  end
+
+  def new_attendance
+    @attendance = Attendance.new
+  end
+
+  def create_attendance
+    a = Attendance.new(date_created: params[:date], comments: params[:comment])
+    a.subject_class = @subject_class
+    if 1 == 2
+      redirect_to attendances_subject_class_path, notice: "Attendance Added"
+    else
+      redirect_to attendances_subject_class_path, notice: Date.parse(params[:date]).to_s
+    end
+
+  end
+
+  def edit_attendance
+
+  end
+
+  def update_attendance
+
+  end
+
+  def destroy_attendance
+
+  end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subject_class
@@ -98,5 +131,9 @@ class SubjectClassesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_class_params
       params.require(:subject_class).permit(:subject_id, :instructor_id, :days, :start_time, :end_time, :block, :school_year, :sem, :room)
+    end
+
+    def attendance_class_params
+      params.permit(:comments, :date_created)
     end
 end

@@ -1,0 +1,37 @@
+<div class="class-header"></div>
+  <% if subject_class.instructor.image %>
+    <div class="class-image">
+      <%= image_tag subject_class.instructor.image %>
+    <%= subject_class.instructor.name %>
+    </div>
+  <% end %>
+  <div class="class-name"><%= link_to "(" + subject_class.subject.subject_code + ") " + subject_class.subject.name, subject_path(subject_class.id) %></div>
+ <table class="info-table-class">    
+    <tr>
+      <th>Schedule:</th>
+      <td  colspan="3"><%= subject_class.schedule %></td>
+    </tr>
+    <tr>
+      <th>Room:</th>
+      <td><%= subject_class.room %></td>
+    </tr>
+    <tr>
+      <th>Block:</th>
+      <td><%= subject_class.block %></td>
+    </tr>
+    <tr>
+      <th>School year:</th>
+      <td><%= subject_class.school_year %></td>
+    </tr>
+    <tr>
+      <th>Sem:</th>
+      <td><%= subject_class.sem %></td>
+    </tr>
+  </table>
+
+  <%= link_to 'Edit', edit_subject_class_path(subject_class) %> |
+  <%= link_to 'Home', subject_class %> |
+  <%= link_to 'Attendance', attendances_subject_class_path(subject_class) %> |
+  <%= link_to 'Tests', edit_subject_class_path(subject_class) %> |
+  <%= link_to 'Summary', edit_subject_class_path(subject_class) %> 
+  

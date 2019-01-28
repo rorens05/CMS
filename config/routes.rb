@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   resources :subject_classes do
     post :add_student, on: :member
     post :remove_student, on: :member
+    get :attendances, on: :member
+    get :new_attendance, on: :member
+    post :create_attendance, on: :member
   end
+
   resources :subjects
   resources :instructors
   resources :students do 

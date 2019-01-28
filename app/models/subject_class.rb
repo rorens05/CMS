@@ -4,6 +4,7 @@ class SubjectClass < ApplicationRecord
 
   has_many :class_enrollments
   has_many :students, through: :class_enrollments
+  has_many :attendances
 
 
   def schedule

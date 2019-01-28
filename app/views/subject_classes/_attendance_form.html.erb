@@ -1,0 +1,26 @@
+<%= form_tag create_attendance_subject_class_path(@subject_class), method: :post do %>
+  <% if attendance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
+      <ul>
+      <% attendance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag :date %>
+    <%= date_select :date, :date%>
+  </div>
+
+  <div class="field">
+    <%= label_tag :comment %>
+    <%= text_area_tag :comment %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Add" %>
+  </div>
+<% end %>
