@@ -10,9 +10,52 @@
       <%= @attendance.comment %>
     </p>
 
+    <br/>
+
     <%= link_to 'Edit', edit_attendance_path(@attendance), class: "btn btn-success new-button" %> 
     <%= link_to 'Destroy', @attendance, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger new-button" %>
 
+    <div class="attendance_details">
+      <table class="index">
+        <thead>
+          <th>Present Students</th>
+        </thead>
+        <% @attendance.attendance_details.each do |ad| %>
+          <tr>
+            <td><%= ad.student.name %></td>
+          </tr>
+        <% end %>
+      </table><hr>
+
+      <h3>Edit</h3>
+      <%= form_tag new_attendance_attendance_path(@attendance) do %>
+        <table class="index">
+          <thead>
+            <th>Student Name</th>
+            <th>Present</th>
+          </thead>
+            
+            <% @attendance.subject_class.students.order(:name).each do |student| %> 
+
+              <% checked = false %>
+
+              <% @attendance.attendance_details.each do |ad| %>
+                <% if student.id == ad.student.id %>
+                  <% checked = true %>
+                <% end %>
+              <% end %>
+
+              <tr>
+                <td><%= student.name %></td>
+                <td><%= check_box_tag student.student_no, student.student_no, checked %> </td>
+              </tr>
+            <% end %>
+
+        </table>
+        <%= submit_tag "Save" %>
+      <% end %>
+            
+    </div>
   </div>
 </div>
 

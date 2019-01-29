@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :attendances
+  resources :attendances do
+    post :new_attendance, on: :member
+  end
+
   resources :subject_classes do
     post :add_student, on: :member
     post :remove_student, on: :member

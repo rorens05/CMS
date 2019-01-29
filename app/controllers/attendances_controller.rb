@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-  before_action :set_attendance, only: [:show, :edit, :update, :destroy]
+  before_action :set_attendance, only: [:show, :edit, :update, :destroy, :new_attendance]
 
   layout 'admin'
   # GET /attendances
@@ -11,6 +11,7 @@ class AttendancesController < ApplicationController
   # GET /attendances/1
   # GET /attendances/1.json
   def show
+    @attendance_details = @attendance.attendance_details
   end
 
   # GET /attendances/new
@@ -67,6 +68,31 @@ class AttendancesController < ApplicationController
       format.html { redirect_to attendances_url, notice: 'Attendance was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def new_attendance
+    puts "destroying all existing attendances"
+
+    @attendance.attendance_details.each do |ad|
+      ad.destroy
+      puts ad.student.name + " destroyed"
+    end
+    
+    puts "looping attendances"
+    count = 0
+    @attendance.subject_class.students.each do |student|
+      if params[student.student_no]
+        attendance_detail = AttendanceDetail.new
+        attendance_detail.student = student
+        attendance_detail.attendance = @attendance
+        if attendance_detail.save
+          puts attendance_detail.student.name + " was saved"
+        else
+          puts "error"
+        end
+      end
+    end 
+    redirect_to @attendance, notice: "Attendance Updated"
   end
 
   private

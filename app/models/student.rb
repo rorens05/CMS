@@ -5,6 +5,7 @@ class Student < ApplicationRecord
   has_one_attached :image
   
   has_many :class_enrollments
+  has_many :attendance_details
   has_many :subject_classes, through: :class_enrollments
   
 
