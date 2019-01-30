@@ -6,14 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-TestDetail.create(name: "Prelim Exam", description: "Preliminary Exam")
-TestDetail.create(name: "Midterm Exam", description: "Midterm Exam")
-TestDetail.create(name: "Semi-final Exam", description: "Semi-final Exam")
-TestDetail.create(name: "Final Exam", description: "Final Exam")
+TestDetail.create(name: "Prelim Exam", test_type: "EXAM", description: "Preliminary Exam")
+TestDetail.create(name: "Midterm Exam", test_type: "EXAM", description: "Midterm Exam")
+TestDetail.create(name: "Semi-final Exam", test_type: "EXAM", description: "Semi-final Exam")
+TestDetail.create(name: "Final Exam", test_type: "EXAM", description: "Final Exam")
 
-TestDetail.create(name: "Quiz", description: "Quiz")
-TestDetail.create(name: "Casestudy", description: "Casestudy")
-TestDetail.create(name: "Reporting", description: "Reporting")
-TestDetail.create(name: "Seat Work", description: "Seat Work")
-TestDetail.create(name: "Recitation", description: "Recitation")
+TestDetail.create(name: "Quiz", test_type: "NORMAL", description: "Quiz")
+TestDetail.create(name: "Casestudy", test_type: "NORMAL", description: "Casestudy")
+TestDetail.create(name: "Reporting", test_type: "NORMAL", description: "Reporting")
+TestDetail.create(name: "Seat Work", test_type: "NORMAL", description: "Seat Work")
+TestDetail.create(name: "Recitation",test_type: "NORMAL", description: "Recitation")
 

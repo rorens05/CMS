@@ -19,6 +19,7 @@ class TestsController < ApplicationController
   # GET /tests/1.json
   def show
     @subject_class = @test.subject_class
+    @students = @test.subject_class.students
   end
 
   # GET /tests/new

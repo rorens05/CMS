@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_29_062917) do
+ActiveRecord::Schema.define(version: 2019_01_30_024641) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -116,6 +116,17 @@ ActiveRecord::Schema.define(version: 2019_01_29_062917) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "test_type"
+  end
+
+  create_table "test_results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "test_id"
+    t.bigint "student_id"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_test_results_on_student_id"
+    t.index ["test_id"], name: "index_test_results_on_test_id"
   end
 
   create_table "tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -147,4 +158,6 @@ ActiveRecord::Schema.define(version: 2019_01_29_062917) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "test_results", "students"
+  add_foreign_key "test_results", "tests"
 end

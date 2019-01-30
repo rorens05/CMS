@@ -7,6 +7,7 @@
   <div class="student-list">
     <h3><%= @test.name %></h3>
 
+    
     <p>
       <strong>Test type:</strong>
       <%= @test.test_type_id %>
@@ -35,6 +36,28 @@
     <%= link_to 'Edit', edit_test_path(@test) %> |
     <%= link_to 'Destroy', @test, method: :delete, data: { confirm: 'Are you sure?' } %> |
     <a href="/tests?subject_class_id=<%= @test.subject_class_id %>">back</a>
+    <hr>
+    <div class="class-student-list">
+      <h3>Students</h3>
+      <table class="index">
+        <thead>
+          <th>Student no</th>
+          <th>Name</th>
+          <th>Year</th> 
+          <th>Score</th>        
+        </thead>
+        <% @students.each do |student| %>
+          <tr>
+            <td><%= student.student_no %></td>
+            <td><%= student.name %></td>
+            <td><%= student.year %></td>
+            <td><%= getScore(@test, student) %></td>
+          </tr>
+        <% end %>
+      </table><br>
+      <%= link_to 'Update', "#", class: "btn btn-primary new-button" %>
+    </div>
+
   </div>
 </div>
   
