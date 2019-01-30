@@ -32,6 +32,7 @@ class AttendancesController < ApplicationController
     @attendance = Attendance.new(attendance_params)
     @subject_class = SubjectClass.find(params[:subject_class_id])
     @attendance.subject_class_id = @subject_class.id
+
     respond_to do |format|
       if @attendance.save
         format.html { redirect_to attendances_subject_class_path(@subject_class), notice: 'Attendance was successfully created.' }

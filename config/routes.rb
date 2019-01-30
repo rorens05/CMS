@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :test_details
+  resources :tests
   resources :attendances do
     post :new_attendance, on: :member
   end

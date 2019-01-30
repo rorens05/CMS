@@ -32,6 +32,6 @@
   <%= link_to 'Edit', edit_subject_class_path(subject_class) %> |
   <%= link_to 'Students', subject_class %> |
   <%= link_to 'Attendance', attendances_subject_class_path(subject_class) %> |
-  <%= link_to 'Tests', "#" %> |
+  <%= link_to 'Tests', tests_path(subject_class_id: subject_class.id) %> |
   <%= link_to 'Summary', "#" %> 
   

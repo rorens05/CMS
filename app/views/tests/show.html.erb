@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<div class="classes-show no-radius">
+  <%= render partial: 'subject_classes/class_details', locals: {subject_class: @subject_class} %>
+
+  <hr>
+  <div class="student-list">
+    <h3><%= @test.name %></h3>
+
+    <p>
+      <strong>Test type:</strong>
+      <%= @test.test_type_id %>
+    </p>
+
+    <p>
+      <strong>Schedule:</strong>
+      <%= @test.schedule %>
+    </p>
+
+    <p>
+      <strong>Is online:</strong>
+      <%= @test.is_online %>
+    </p>
+
+    <p>
+      <strong>No of items:</strong>
+      <%= @test.no_of_items %>
+    </p>
+
+    <p>
+      <strong>Subject class:</strong>
+      <%= @test.subject_class_id %>
+    </p>
+
+    <%= link_to 'Edit', edit_test_path(@test) %> |
+    <%= link_to 'Destroy', @test, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <a href="/tests?subject_class_id=<%= @test.subject_class_id %>">back</a>
+  </div>
+</div>
+  

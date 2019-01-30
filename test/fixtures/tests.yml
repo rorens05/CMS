@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  test_type_id: 1
+  schedule: 2019-01-29 14:28:27
+  is_online: false
+  no_of_items: 1
+  subject_class_id: 1
+
+two:
+  name: MyString
+  test_type_id: 1
+  schedule: 2019-01-29 14:28:27
+  is_online: false
+  no_of_items: 1
+  subject_class_id: 1
