@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :set_test, only: [:show, :edit, :update, :destroy]
+  before_action :set_test, only: [:show, :edit, :update, :destroy,]
   before_action :set_subject_class, only: [:index, :new]
 
   layout 'admin'
@@ -19,7 +19,7 @@ class TestsController < ApplicationController
   # GET /tests/1.json
   def show
     @subject_class = @test.subject_class
-    @students = @test.subject_class.students
+    @students = @test.subject_class.students.order(:name)
   end
 
   # GET /tests/new
@@ -38,7 +38,13 @@ class TestsController < ApplicationController
     @test = Test.new(test_params)
 
     respond_to do |format|
-      if @test.save
+      if @test.save 
+
+        @students = @test.subject_class.students #create student test result and set to zero to be edited by instructor
+        @students.each do |student|
+          TestResult.create(test_id: @test.id, student_id: student.id, score: 0)
+        end        
+
         format.html { redirect_to @test, notice: 'Test was successfully created.' }
         format.json { render :show, status: :created, location: @test }
       else
@@ -70,6 +76,27 @@ class TestsController < ApplicationController
       format.html { redirect_to tests_url(subject_class_id: @test.subject_class_id), notice: 'Test was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def edit_students_scores
+    @test = Test.find(params[:id])
+    @students = @test.subject_class.students.order(:name)
+    
+  end
+
+  def update_students_scores
+    @test = Test.find(params[:id])
+    
+    @test.subject_class.students.each do |student|      
+      test_detail = TestResult.all.where(student_id: student.id, test_id: @test.id).first || TestResult.new(student_id: student.id, test_id: @test.id)
+      test_detail.score = params[student.student_no].to_i
+      if test_detail.save 
+        puts "========================saved========================="
+      end
+    end
+
+    flash[:notice] = "Result Updated Successfully!"
+    redirect_to test_path(@test)
   end
 
   private

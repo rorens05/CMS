@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="classes-show no-radius">
-  <%= render partial: 'subject_classes/class_details', locals: {subject_class: @subject_class} %>
+  <%= render partial: 'subject_classes/class_details', locals: {subject_class: @test.subject_class} %>
 
   <hr>
   <div class="student-list">
@@ -39,6 +39,7 @@
     <hr>
     <div class="class-student-list">
       <h3>Students</h3>
+      <%= form_tag update_students_scores_test_path(@test) do %>
       <table class="index">
         <thead>
           <th>Student no</th>
@@ -51,11 +52,12 @@
             <td><%= student.student_no %></td>
             <td><%= student.name %></td>
             <td><%= student.year %></td>
-            <td><%= getScore(@test, student) %></td>
+            <td><input style="width: 50px; text-align: center" type="text" name="<%= student.student_no %>" value="<%= getScore(@test, student) %>"></td>
           </tr>
         <% end %>
       </table><br>
-      <%= link_to 'edit', edit_students_scores_test_path(@test) %>
+      <%= submit_tag "Update", class: "btn btn-primary" %>
+      <% end %>
     </div>
 
   </div>

@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  get 'dashboard/student'
+  get 'dashboard/instructor'
+  get 'dashboard/admin'
   resources :test_details
-  resources :tests
+  resources :tests do
+    get :edit_students_scores, on: :member
+    post :update_students_scores, on: :member
+  end
   resources :attendances do
     post :new_attendance, on: :member
   end

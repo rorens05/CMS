@@ -4,8 +4,26 @@
 
 <div class="jumbotron no-radius">
   <div class="clear-fix"> 
+    
+
+  <label for="semister">School Year:</label>
+  <select class="target">
+    <option value="option1" selected="selected">2018-2019</option>
+    <option value="option1" >2017-2018</option>
+    <option value="option1" >2016-2017</option>
+  </select>
+
+  <label for="semister">Semister:</label>
+  <select class="target">
+    <option value="option1" selected="selected">1st Semister</option>
+    <option value="option1" >2nd Semister</option>
+    <option value="option1" >Summer</option>
+  </select>
+
+  
     <%= render partial: 'display_classes', locals: {classes: @subject_classes} %>
   </div>
-  
+
+
   <%= link_to 'New Subject Class', new_subject_class_path, class: "btn btn-primary new-button" %>
 </div>

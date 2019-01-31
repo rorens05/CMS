@@ -16,7 +16,6 @@
           <th>Schedule</th>
           <th>Is online</th>
           <th>No of items</th>
-          <th>Subject class</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -25,11 +24,10 @@
         <% @tests.each do |test| %>
           <tr>
             <td><%= link_to test.name, test %></td>
-            <td><%= test.test_type_id %></td>
+            <td><%= test.test_detail.name %></td>
             <td><%= test.schedule %></td>
             <td><%= test.is_online %></td>
             <td><%= test.no_of_items %></td>
-            <td><%= test.subject_class_id %></td>
             <td><%= link_to 'Edit', edit_test_path(test) %></td>
           </tr>
         <% end %>

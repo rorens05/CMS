@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :test_type_id %>
-    <%= form.number_field :test_type_id %>
+    <%= form.select :test_type_id, options_from_collection_for_select(TestDetail.all, "id", "name", @test.test_type_id) %>
   </div>
 
   <div class="field">

@@ -74,10 +74,16 @@ class SubjectClassesController < ApplicationController
     
     if @subject_class.students.where(id: student.id).size == 0    
       @subject_class.students << student
+      
+      @subject_class.tests.each do |test|
+        TestResult.create(score: 0, test_id: test.id, student_id: student.id)
+      end
+      
+
       redirect_to @subject_class, notice: "added successfully"
     else
       redirect_to @subject_class, notice: student.name + " is already belongs to the class"
-    end
+    end 
     
     
   end
