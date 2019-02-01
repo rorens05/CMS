@@ -1,0 +1,17 @@
+<div class="login">
+  <img src="/images/cslogo.png" alt="cs-logo">
+  <div id="error_explanation">
+    <p><%= flash[:notice] %></p>
+  </div>
+  <%= form_tag user_authentication_attempt_login_path, method: 'post' do%>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  <% end %>
+</div>

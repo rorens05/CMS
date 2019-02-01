@@ -1,0 +1,41 @@
+// Place all the styles related to the UserAuthentication controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$body-color: #005e63;
+$panel-color: rgb(72, 191, 255);
+
+.login-body{
+  background-color: $body-color;
+  border: none
+}
+
+.login{
+  margin-top: 100px !important;
+  background-color: $panel-color;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px 20px 30px 20px;
+  box-shadow: 5px 5px 5px;
+
+  img{
+    width:200px;
+    height:200px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 100px;
+    box-shadow: 3px 3px gray;    
+  }
+
+  button{
+    width: 100%;
+  }
+}
+
+#error_explanation{
+  padding-top: 20px;
+  p{
+    color: rgb(255, 0, 0);
+  }
+}
