@@ -2,8 +2,6 @@ class DashboardController < ApplicationController
 
   before_action :check_user
 
-  layout 'admin'
-
   def student
   end
 

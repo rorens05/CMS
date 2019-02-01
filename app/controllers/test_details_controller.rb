@@ -1,7 +1,6 @@
 class TestDetailsController < ApplicationController
   before_action :set_test_detail, only: [:show, :edit, :update, :destroy]
 
-  layout 'admin'
 
   # GET /test_details
   # GET /test_details.json

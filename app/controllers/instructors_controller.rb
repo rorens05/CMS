@@ -1,7 +1,6 @@
 class InstructorsController < ApplicationController
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
-
-  layout "admin"
+  before_action :admin_only, only: [:index, :new, :create, :destroy]
 
   # GET /instructors
   # GET /instructors.json

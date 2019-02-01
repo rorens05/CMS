@@ -1,8 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
-
-  layout "admin"
-
+  before_action :admin_only, only: [:new, :create, :destroy, :import]
   # GET /students
   # GET /students.json
   def index

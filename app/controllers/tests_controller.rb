@@ -2,7 +2,6 @@ class TestsController < ApplicationController
   before_action :set_test, only: [:show, :edit, :update, :destroy,]
   before_action :set_subject_class, only: [:index, :new]
 
-  layout 'admin'
   # GET /tests
   # GET /tests.json
   def index

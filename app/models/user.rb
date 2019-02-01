@@ -9,4 +9,8 @@ class User < ApplicationRecord
   scope :admins, lambda {where(user_type: "ADMIN")}
   scope :students, lambda {where(user_type: "STUDENT")}
   scope :instructors, lambda {where(user_type: "INSTRUCTORS")}
+
+  def name
+    self.first_name
+  end
 end

@@ -55,4 +55,14 @@ class UserAuthenticationController < ApplicationController
       redirect_to dashboard_student_path
     end
   end
+
+  def current_user
+    if is_admin?
+      return User.find(session[:id])
+    elsif is_student?
+      return Student.find(session[:id])
+    elsif is_instructor?
+      return Instructor.find(session[:id])
+    end
+  end
 end

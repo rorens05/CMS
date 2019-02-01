@@ -1,8 +1,29 @@
 class ApplicationController < ActionController::Base
  
+  layout :set_layout
+
   before_action :require_login, except: [:login, :logout, :attempt_login] 
   before_action :redirect_to_current_user, only: [:login , :attempt_login] 
 
+ 
+
+  def set_layout
+    if is_admin?
+      'admin'
+    elsif is_instructor?
+      'instructor'
+    elsif is_student?
+      'student'
+    end
+  end
+
+  def admin_only
+    unless session[:type] == "1"
+      redirect_to "/422.html"
+    end
+  end
+
+  # user authentication
   def require_login
     if session[:id].blank?
       redirect_to user_authentication_login_path
@@ -14,7 +35,6 @@ class ApplicationController < ActionController::Base
       redirect_to dashboard_admin_path
     end
   end
-
   
   def is_login?
     if session[:id]
@@ -49,5 +69,6 @@ class ApplicationController < ActionController::Base
       return true
     end
   end
+
 
 end

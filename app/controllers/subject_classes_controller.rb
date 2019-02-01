@@ -1,7 +1,6 @@
 class SubjectClassesController < ApplicationController
   before_action :set_subject_class, only: [:show, :edit, :update, :destroy, :add_student, :remove_student, :attendances, :new_attendance, :create_attendance]
 
-  layout 'admin'
 
   # GET /subject_classes
   # GET /subject_classes.json

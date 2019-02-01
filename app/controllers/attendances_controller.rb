@@ -1,11 +1,11 @@
 class AttendancesController < ApplicationController
   before_action :set_attendance, only: [:show, :edit, :update, :destroy, :new_attendance]
-
-  layout 'admin'
+  
   # GET /attendances
   # GET /attendances.json
   def index
     @attendances = Attendance.all
+    
   end
 
   # GET /attendances/1

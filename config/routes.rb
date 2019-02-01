@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root 'dashboard#admin'
   get 'dashboard/student'
   get 'dashboard/instructor'
   get 'dashboard/admin'

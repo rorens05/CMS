@@ -1,0 +1,9 @@
+ 
+ <% if current_user.image.attachment.present? %>
+  <div class="header-icon">
+    <%= image_tag current_user.image %>
+  </div>
+ <% else %> 
+  <span class="fa fa-user"></span>
+ <% end %>
+  <%= current_user.name %>
