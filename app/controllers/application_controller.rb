@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
   before_action :show_console
 
   def show_console
-    console
+    if Rails.env.development?
+      console
+    end
   end
  
 
@@ -29,7 +31,8 @@ class ApplicationController < ActionController::Base
 
   # user authentication
   def require_login
-    
+    # session[:id] = nil
+    # session[:type] = nil    
     if session[:id].blank?
       redirect_to user_authentication_login_path
     end
