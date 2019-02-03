@@ -7,7 +7,7 @@ class SubjectClassesController < ApplicationController
   def index
     @school_year = params[:school_year] || SubjectClass.last.school_year
     @sem = params[:sem] || '2nd Semister'
-    @subject_classes = SubjectClass.where(school_year: @school_year, sem: @sem)
+    @subject_classes = SubjectClass.where(school_year: @school_year, sem: @sem) || nil
     if session[:type] == '2'
       instructor = Instructor.find(session[:id])
       @subject_classes = @subject_classes.where(instructor_id: instructor.id)
