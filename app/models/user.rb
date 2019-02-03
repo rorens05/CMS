@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   has_one_attached :image
   validates :username, presence: true
+  validates :first_name, presence: true
   validates :image, presence: true
   validates :email, presence: true
   validates :user_type, presence: true

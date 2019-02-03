@@ -17,3 +17,4 @@ TestDetail.create(name: "Reporting", test_type: "NORMAL", description: "Reportin
 TestDetail.create(name: "Seat Work", test_type: "NORMAL", description: "Seat Work")
 TestDetail.create(name: "Recitation",test_type: "NORMAL", description: "Recitation")
 
+User.create(username: 'admin', password: 'admin', user_type: 'ADMIN', first_name: 'admin', last_name: '', middle_name: '', email: 'admin@cs.com', address: 'admin', gender: 'male', birthday: Date.new)

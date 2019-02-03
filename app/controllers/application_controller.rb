@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
 
   # user authentication
   def require_login
+    
     if session[:id].blank?
       redirect_to user_authentication_login_path
     end
