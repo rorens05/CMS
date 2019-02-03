@@ -16,7 +16,8 @@
     <%= form.select :subject_id, options_from_collection_for_select(@subjects, :id, :name, subject_class.subject ? subject_class.subject.id : "1") %>
   </div>
 
-  <div class="field">
+
+  <div class="field <%= hidden_if_instructor %>">
     <%= form.label :instructor_id %>
     <%= form.select :instructor_id, options_from_collection_for_select(@instructors, :id, :name, subject_class.instructor ? subject_class.instructor.id : "1") %>
   </div>

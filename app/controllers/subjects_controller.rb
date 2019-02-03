@@ -1,10 +1,10 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
-
+  before_action :admin_only, only: [:new, :edit, :create, :update, :destroy]
   # GET /subjects
   # GET /subjects.json
   def index
-    @subjects = Subject.all
+    @subjects = Subject.all.order(:year)
   end
 
   # GET /subjects/1

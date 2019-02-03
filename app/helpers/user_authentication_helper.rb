@@ -57,4 +57,10 @@ module UserAuthenticationHelper
     end
   end
 
+  def hidden_if_instructor
+    if is_instructor?
+      return "hidden"
+    end
+  end
+
 end

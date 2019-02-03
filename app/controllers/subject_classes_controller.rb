@@ -1,11 +1,17 @@
 class SubjectClassesController < ApplicationController
   before_action :set_subject_class, only: [:show, :edit, :update, :destroy, :add_student, :remove_student, :attendances, :new_attendance, :create_attendance]
-
+  
 
   # GET /subject_classes
   # GET /subject_classes.json
   def index
-    @subject_classes = SubjectClass.all
+    @school_year = params[:school_year] || SubjectClass.last.school_year
+    @sem = params[:sem] || '2nd Semister'
+    @subject_classes = SubjectClass.where(school_year: @school_year, sem: @sem)
+    if session[:type] == '2'
+      instructor = Instructor.find(session[:id])
+      @subject_classes = @subject_classes.where(instructor_id: instructor.id)
+    end
   end
 
   # GET /subject_classes/1
@@ -16,7 +22,8 @@ class SubjectClassesController < ApplicationController
 
   # GET /subject_classes/new
   def new
-    @subject_class = SubjectClass.new
+    instructor = Instructor.find(session[:id])
+    @subject_class = SubjectClass.new(instructor_id: instructor.id)
     @subjects = Subject.all
     @instructors = Instructor.all
   end

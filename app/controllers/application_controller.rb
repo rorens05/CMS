@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login, except: [:login, :logout, :attempt_login] 
   before_action :redirect_to_current_user, only: [:login , :attempt_login] 
+  before_action :show_console
 
+  def show_console
+    console
+  end
  
 
   def set_layout

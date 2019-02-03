@@ -635,9 +635,13 @@ table.index-table tr,table.index-table th, table.index-table td{
 }
 
 
+.console-cursor, .console-prompt-display, .console-message{
+  font-size: large
+}
 
-
-
+#console{
+  height: 4px;
+}
 
 
 
