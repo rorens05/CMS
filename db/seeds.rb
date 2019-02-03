@@ -1,67 +1,4 @@
-Attendance.create!([
-  {date_created: "2019-02-04", comment: "Normal day", subject_class_id: 1},
-  {date_created: "2019-02-06", comment: "Normal Day", subject_class_id: 1},
-  {date_created: "2019-02-08", comment: "Exam Day", subject_class_id: 1}
-])
-AttendanceDetail.create!([
-  {student_id: 1, attendance_id: 1},
-  {student_id: 6, attendance_id: 1},
-  {student_id: 13, attendance_id: 1},
-  {student_id: 19, attendance_id: 1},
-  {student_id: 33, attendance_id: 1},
-  {student_id: 36, attendance_id: 1},
-  {student_id: 83, attendance_id: 1},
-  {student_id: 118, attendance_id: 1},
-  {student_id: 179, attendance_id: 1},
-  {student_id: 414, attendance_id: 1},
-  {student_id: 1, attendance_id: 2},
-  {student_id: 6, attendance_id: 2},
-  {student_id: 13, attendance_id: 2},
-  {student_id: 19, attendance_id: 2},
-  {student_id: 36, attendance_id: 2},
-  {student_id: 56, attendance_id: 2},
-  {student_id: 83, attendance_id: 2},
-  {student_id: 93, attendance_id: 2},
-  {student_id: 118, attendance_id: 2},
-  {student_id: 244, attendance_id: 2},
-  {student_id: 1, attendance_id: 3},
-  {student_id: 6, attendance_id: 3},
-  {student_id: 13, attendance_id: 3},
-  {student_id: 15, attendance_id: 3},
-  {student_id: 19, attendance_id: 3},
-  {student_id: 33, attendance_id: 3},
-  {student_id: 36, attendance_id: 3},
-  {student_id: 56, attendance_id: 3},
-  {student_id: 83, attendance_id: 3},
-  {student_id: 93, attendance_id: 3},
-  {student_id: 118, attendance_id: 3},
-  {student_id: 179, attendance_id: 3},
-  {student_id: 244, attendance_id: 3},
-  {student_id: 414, attendance_id: 3}
-])
-ClassEnrollment.create!([
-  {student_id: 1, subject_class_id: 1},
-  {student_id: 6, subject_class_id: 1},
-  {student_id: 13, subject_class_id: 1},
-  {student_id: 15, subject_class_id: 1},
-  {student_id: 19, subject_class_id: 1},
-  {student_id: 33, subject_class_id: 1},
-  {student_id: 36, subject_class_id: 1},
-  {student_id: 56, subject_class_id: 1},
-  {student_id: 83, subject_class_id: 1},
-  {student_id: 93, subject_class_id: 1},
-  {student_id: 179, subject_class_id: 1},
-  {student_id: 244, subject_class_id: 1},
-  {student_id: 118, subject_class_id: 1},
-  {student_id: 414, subject_class_id: 1}
-])
-Instructor.create!([
-  {username: "pastor", password_digest: "$2a$10$LxeOnX7PDE0ndPifGMPx0eVOTfP.9GsgrRXaelgu1z4/RwHtrBCZG", name: "Eugevar Silang", email: "eudz@cs.com", contact_no: "09095737474", address: "Calaciao Pangasinan", gender: "Male", birthday: "2016-02-03", other_information: "Master in IT\r\n", position: "MIS Head"},
-  {username: "Dean", password_digest: "$2a$10$YsSJtZHTE8Pm0Eb3abIN7uAy1dG6oEYuvZjTAZJnl7XhGHH5b2VMe", name: "Diosdado Caronongan", email: "dean@cs.com", contact_no: "09095737474", address: "Lingayen Pangasinan", gender: "Male", birthday: "2014-02-03", other_information: "Doctor in IT", position: "Dean"},
-  {username: "lorenz", password_digest: "$2a$10$1UMDOtFDm.sl.azapiyy5.7u6k4r1xqHbNgG.B1Jkj1Tzv9fKhkoK", name: "Lorenz Raphael Camacho", email: "lorenz@cs.com", contact_no: "09095737474", address: "Calaciao Pangasinan", gender: "Male", birthday: "2014-03-04", other_information: "Master in IT", position: "Instructor"},
-  {username: "botski", password_digest: "$2a$10$I7Cle/ryCZUPJL/Es8Dqo.NglWZeGaUSqcL4auX1L2kSI3GY2sx9G", name: "Andrew Caronongan", email: "botski@cs.com", contact_no: "09095737474", address: "Lingayen Pangasinan", gender: "Male", birthday: "2014-06-07", other_information: "Master in IT", position: "Laboratory Administrator"},
-  {username: "rina", password_digest: "$2a$10$ORDJD/DYfxQ3Dzj.kdqKdOUuCUTHYGySkfguXQ9z3VDCl4Y98yk3i", name: "Rina Cabansag", email: "rina@cs.com", contact_no: "09095737474", address: "Calaciao Pangasinan", gender: "Female", birthday: "2014-02-03", other_information: "Master in IT", position: "Program Coordinator (CS)"}
-])
+
 Student.create!([
   {student_no: "17-0707-396", email: nil, contact_no: nil, curriculum_year: nil, year: 2, course: "BSIT", year_enrolled: nil, gender: nil, birthday: nil, password_digest: "$2a$10$aWy2eaIyo.9ajioFlFClieEHRemCKRXZRcFS2SYfVR5Z3Xa27mygy", address: nil, name: "Abadilla, Michelle B."},
   {student_no: "15-2803-601", email: nil, contact_no: nil, curriculum_year: nil, year: 2, course: "BSIT", year_enrolled: nil, gender: nil, birthday: nil, password_digest: "$2a$10$fXTSqd4lNnU1ZecOxJv//ethfAqSHmoEOEgXMyuh6NQZVXE.Epone", address: nil, name: "Abdat, Abdulkarem T."},
@@ -516,6 +453,14 @@ Student.create!([
   {student_no: "13-0233-462", email: nil, contact_no: nil, curriculum_year: nil, year: 2, course: "BSIT", year_enrolled: nil, gender: nil, birthday: nil, password_digest: "$2a$10$becCOWb4Z64mQWHXvePZBemHLWoe/gKK4KpJJVV8RTvFlR97BcE/q", address: nil, name: "Zipagan, Christian Michael A."},
   {student_no: "17-0794-687", email: nil, contact_no: nil, curriculum_year: nil, year: 2, course: "BSIT", year_enrolled: nil, gender: nil, birthday: nil, password_digest: "$2a$10$GyjHSB3ZhP5xmG6wgSS6/.0Gkj0aDncSj1F9s4oqF7CA0/e.WioBW", address: nil, name: "Zulueta, Daryl C."}
 ])
+
+Instructor.create!([
+  {username: "pastor", password_digest: "$2a$10$LxeOnX7PDE0ndPifGMPx0eVOTfP.9GsgrRXaelgu1z4/RwHtrBCZG", name: "Eugevar Silang", email: "eudz@cs.com", contact_no: "09095737474", address: "Calaciao Pangasinan", gender: "Male", birthday: "2016-02-03", other_information: "Master in IT\r\n", position: "MIS Head"},
+  {username: "Dean", password_digest: "$2a$10$YsSJtZHTE8Pm0Eb3abIN7uAy1dG6oEYuvZjTAZJnl7XhGHH5b2VMe", name: "Diosdado Caronongan", email: "dean@cs.com", contact_no: "09095737474", address: "Lingayen Pangasinan", gender: "Male", birthday: "2014-02-03", other_information: "Doctor in IT", position: "Dean"},
+  {username: "lorenz", password_digest: "$2a$10$1UMDOtFDm.sl.azapiyy5.7u6k4r1xqHbNgG.B1Jkj1Tzv9fKhkoK", name: "Lorenz Raphael Camacho", email: "lorenz@cs.com", contact_no: "09095737474", address: "Calaciao Pangasinan", gender: "Male", birthday: "2014-03-04", other_information: "Master in IT", position: "Instructor"},
+  {username: "botski", password_digest: "$2a$10$I7Cle/ryCZUPJL/Es8Dqo.NglWZeGaUSqcL4auX1L2kSI3GY2sx9G", name: "Andrew Caronongan", email: "botski@cs.com", contact_no: "09095737474", address: "Lingayen Pangasinan", gender: "Male", birthday: "2014-06-07", other_information: "Master in IT", position: "Laboratory Administrator"},
+  {username: "rina", password_digest: "$2a$10$ORDJD/DYfxQ3Dzj.kdqKdOUuCUTHYGySkfguXQ9z3VDCl4Y98yk3i", name: "Rina Cabansag", email: "rina@cs.com", contact_no: "09095737474", address: "Calaciao Pangasinan", gender: "Female", birthday: "2014-02-03", other_information: "Master in IT", position: "Program Coordinator (CS)"}
+])
 Subject.create!([
   {name: "Programming 1", subject_code: "CCS 55", year: 1, units: 3},
   {name: "Programming 2", subject_code: "CCS 21L", year: 2, units: 3},
@@ -545,9 +490,26 @@ SubjectClass.create!([
   {subject_id: 12, instructor_id: 1, days: "MWF", start_time: "2000-01-01 16:13:00", end_time: "2000-01-01 16:13:00", block: 1, school_year: "2018", sem: "2nd Semister", room: "LR1"},
   {subject_id: 13, instructor_id: 2, days: "MWF", start_time: "2000-01-01 16:13:00", end_time: "2000-01-01 16:13:00", block: 2, school_year: "2018", sem: "2nd Semister", room: "LR1"}
 ])
-Test.create!([
-  {name: "Prelim Exam", test_type_id: 1, schedule: "2019-02-06 16:18:00", is_online: false, no_of_items: 50, subject_class_id: 1}
+
+
+ClassEnrollment.create!([
+  {student_id: 1, subject_class_id: 1},
+  {student_id: 6, subject_class_id: 1},
+  {student_id: 13, subject_class_id: 1},
+  {student_id: 15, subject_class_id: 1},
+  {student_id: 19, subject_class_id: 1},
+  {student_id: 33, subject_class_id: 1},
+  {student_id: 36, subject_class_id: 1},
+  {student_id: 56, subject_class_id: 1},
+  {student_id: 83, subject_class_id: 1},
+  {student_id: 93, subject_class_id: 1},
+  {student_id: 179, subject_class_id: 1},
+  {student_id: 244, subject_class_id: 1},
+  {student_id: 118, subject_class_id: 1},
+  {student_id: 414, subject_class_id: 1}
 ])
+
+
 TestDetail.create!([
   {name: "Prelim Exam", description: "Preliminary Exam", test_type: "EXAM"},
   {name: "Midterm Exam", description: "Midterm Exam", test_type: "EXAM"},
@@ -558,6 +520,10 @@ TestDetail.create!([
   {name: "Reporting", description: "Reporting", test_type: "NORMAL"},
   {name: "Seat Work", description: "Seat Work", test_type: "NORMAL"},
   {name: "Recitation", description: "Recitation", test_type: "NORMAL"}
+])
+
+Test.create!([
+  {name: "Prelim Exam", test_type_id: 1, schedule: "2019-02-06 16:18:00", is_online: false, no_of_items: 50, subject_class_id: 1}
 ])
 TestResult.create!([
   {test_id: 1, student_id: 1, score: 44},
@@ -577,4 +543,46 @@ TestResult.create!([
 ])
 User.create!([
   {username: "admin", password_digest: "$2a$10$N1Mb4YonbepCIP86f7BSWej3ng0yj0rM/799w43ujUl901wthl/DG", user_type: "ADMIN", first_name: "admin", last_name: "", middle_name: "", email: "admin@cs.com", contact_no: "", address: "admin", gender: "Male", birthday: "1920-01-01", image: nil}
+])
+
+Attendance.create!([
+  {date_created: "2019-02-04", comment: "Normal day", subject_class_id: 1},
+  {date_created: "2019-02-06", comment: "Normal Day", subject_class_id: 1},
+  {date_created: "2019-02-08", comment: "Exam Day", subject_class_id: 1}
+])
+AttendanceDetail.create!([
+  {student_id: 1, attendance_id: 1},
+  {student_id: 6, attendance_id: 1},
+  {student_id: 13, attendance_id: 1},
+  {student_id: 19, attendance_id: 1},
+  {student_id: 33, attendance_id: 1},
+  {student_id: 36, attendance_id: 1},
+  {student_id: 83, attendance_id: 1},
+  {student_id: 118, attendance_id: 1},
+  {student_id: 179, attendance_id: 1},
+  {student_id: 414, attendance_id: 1},
+  {student_id: 1, attendance_id: 2},
+  {student_id: 6, attendance_id: 2},
+  {student_id: 13, attendance_id: 2},
+  {student_id: 19, attendance_id: 2},
+  {student_id: 36, attendance_id: 2},
+  {student_id: 56, attendance_id: 2},
+  {student_id: 83, attendance_id: 2},
+  {student_id: 93, attendance_id: 2},
+  {student_id: 118, attendance_id: 2},
+  {student_id: 244, attendance_id: 2},
+  {student_id: 1, attendance_id: 3},
+  {student_id: 6, attendance_id: 3},
+  {student_id: 13, attendance_id: 3},
+  {student_id: 15, attendance_id: 3},
+  {student_id: 19, attendance_id: 3},
+  {student_id: 33, attendance_id: 3},
+  {student_id: 36, attendance_id: 3},
+  {student_id: 56, attendance_id: 3},
+  {student_id: 83, attendance_id: 3},
+  {student_id: 93, attendance_id: 3},
+  {student_id: 118, attendance_id: 3},
+  {student_id: 179, attendance_id: 3},
+  {student_id: 244, attendance_id: 3},
+  {student_id: 414, attendance_id: 3}
 ])
