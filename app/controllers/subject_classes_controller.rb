@@ -5,13 +5,20 @@ class SubjectClassesController < ApplicationController
   # GET /subject_classes
   # GET /subject_classes.json
   def index
-    @school_year = params[:school_year] || SubjectClass.last.school_year
-    @sem = params[:sem] || '2nd Semister'
-    @subject_classes = SubjectClass.where(school_year: @school_year, sem: @sem) || nil
+
+    @subject_classes = SubjectClass.all
+    if SubjectClass.count != 0
+      @school_year = params[:school_year] || SubjectClass.last.school_year
+      @sem = params[:sem] || '2nd Semister'
+      @subject_classes = SubjectClass.where(school_year: @school_year, sem: @sem)
+    end
+
+
     if session[:type] == '2'
       instructor = Instructor.find(session[:id])
       @subject_classes = @subject_classes.where(instructor_id: instructor.id)
     end
+
   end
 
   # GET /subject_classes/1
@@ -22,8 +29,11 @@ class SubjectClassesController < ApplicationController
 
   # GET /subject_classes/new
   def new
-    instructor = Instructor.find(session[:id])
-    @subject_class = SubjectClass.new(instructor_id: instructor.id)
+    @subject_class = SubjectClass.new
+    if session[:type] == '2'
+      instructor = Instructor.find(session[:id])
+      @subject_class.instructor_id = instructor.id
+    end
     @subjects = Subject.all
     @instructors = Instructor.all
   end
