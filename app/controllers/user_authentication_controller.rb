@@ -1,5 +1,6 @@
 class UserAuthenticationController < ApplicationController
 
+  skip_before_action :restrict_student
   layout 'application'
 
   def login

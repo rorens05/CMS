@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :require_login, except: [:login, :logout, :attempt_login] 
   before_action :redirect_to_current_user, only: [:login , :attempt_login] 
   before_action :show_console
+  before_action :restrict_student 
 
   def show_console
     if Rails.env.development?
@@ -28,6 +29,14 @@ class ApplicationController < ActionController::Base
       redirect_to "/422.html"
     end
   end
+
+  def restrict_student
+    if session[:type] == "3"
+      redirect_to "/422.html"
+    end
+  end
+
+  
 
   # user authentication
   def require_login

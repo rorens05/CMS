@@ -55,6 +55,8 @@ test:
 #
 production:
   <<: *default
-  database: CMS_production
-  username: CMS
-  password: <%= ENV['CMS_DATABASE_PASSWORD'] %>
+  # database: CMS_production
+  # username: CMS
+  # password: <%= ENV['CMS_DATABASE_PASSWORD'] %>
+  # RAILS_ENV=production bundle exec rake assets:precompile
+  database: CMS_development

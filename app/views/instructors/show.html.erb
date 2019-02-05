@@ -61,12 +61,11 @@
   </div><hr>
  
   <div class="instructor-classes">
-
     <h3>Classes</h3>
-    
-    <%= render 'subject_classes/sem_year_select' %>  
-    <%= render partial: 'subject_classes/display_classes', locals: {classes: @subject_classes} %>
+    <div class="clear-fix">
+      <%= render 'subject_classes/sem_year_select' %>  
+      <%= render partial: 'subject_classes/display_classes', locals: {classes: @subject_classes} %>
+    </div>
+    <%= link_to 'New Class', new_subject_class_path(@instructor), class: "btn btn-primary new-button" %>
   </div>
-
-
 </div>

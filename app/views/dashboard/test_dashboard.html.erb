@@ -1,0 +1,33 @@
+<h1><%= @test.name + " Information" %></h1><hr>
+<div class="container test">
+  <table class="info">
+    <tr>
+      <th>Subject: </th>
+      <td><%= @test.subject_class.subject.name %></td>
+    </tr>
+    <tr>
+      <th>Room: </th>
+      <td><%= @test.subject_class.room %></td>
+    </tr>
+    <tr>
+      <th>Block: </th>
+      <td><%= @test.subject_class.block %></td>
+    </tr>
+    <tr>
+      <th>Test Type: </th>
+      <td><%= @test.test_detail.name %></td>
+    </tr>
+    <tr>
+      <th>Schedule: </th>
+      <td><%= @test.subject_class.schedule %></td>
+    </tr>
+    <tr>
+      <th>Number of Items: </th>
+      <td><%= @test.no_of_items %></td>
+    </tr>
+    <tr>
+      <th>Is Online: </th>
+      <td><%= @test.is_online %></td>
+    </tr>
+  </table><hr>
+</div>

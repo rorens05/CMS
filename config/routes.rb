@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   get 'profile/index'
   root 'dashboard#admin'
   get 'dashboard/student'
+  get 'dashboard/class_information'
+  get 'dashboard/classes'
+  get 'dashboard/test_dashboard'
   get 'dashboard/instructor'
   get 'dashboard/admin'
   get 'instructors/classes', to: 'instructors#show'
-  
   get 'user_authentication/login'
   post 'user_authentication/attempt_login'
   delete 'user_authentication/logout'

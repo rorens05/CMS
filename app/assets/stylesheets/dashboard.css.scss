@@ -1,0 +1,30 @@
+.att-test{
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px !important
+}
+
+.fit{
+  width: 100%;
+  margin: 0 auto;
+  float: left;
+}
+
+.test{
+  border: 1px solid rgba(128, 128, 128, 0.288);
+  border-top : 12px solid #0F97DE;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  
+  padding: 20px;
+}
+
+table.info{
+  th{
+    padding: 2px 5px;
+  }
+  td{
+    padding: 2px 5px;
+  }
+}

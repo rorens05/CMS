@@ -102,6 +102,11 @@ class TestsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_test
       @test = Test.find(params[:id])
+      if session[:type] == "2"
+        if @test.subject_class.instructor_id.to_s != session[:id].to_s
+          redirect_to "/404.html"
+        end
+      end
     end
 
     def set_subject_class

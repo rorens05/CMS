@@ -1,0 +1,96 @@
+<h1>Class Information</h1><hr>
+<p id="notice"><%= notice %></p>
+
+<div class="instructor-info clear-fix">
+
+  <div class="instructor-header "></div>
+
+  <div class="image-container" style="width: 250px;">
+    <% if @instructor.image.attachment.present? %>
+      <%= image_tag(@instructor.image, class: " box-shadow") %>
+    <% end %>
+
+    <h3 style="text-align:center; margin-top: 20px;">
+      <%= @instructor.name %>
+    </h3>
+
+    <p style="text-align:center; color: blue">
+      <%= @instructor.email %> ~ <%= @instructor.position %>
+    </p>
+    <h4 style="text-align:center;"><%= @instructor.other_information %></h4>
+    
+  </div>
+
+  <div class="info-container">     
+
+    <h3><%= @subject_class.subject.name %></h3>
+    <h4><%= @subject_class.subject.subject_code %></h4>
+    <table>
+      <tr>
+        <th>Block:</th>
+        <th><%= @subject_class.block %></th>        
+      </tr>
+      <tr>
+        <th>Schedule:</th>
+        <th><%= @subject_class.schedule %></th>        
+      </tr>
+      <tr>
+        <th>Room:</th>
+        <th><%= @subject_class.room %></th>        
+      </tr>
+      <tr>
+        <th>School year:</th>
+        <th><%= @subject_class.school_year %></th>        
+      </tr>
+    </table><br><br>
+    <%= link_to 'Performance Summary', "#", class: "btn btn-primary new-button" %> 
+
+  </div>
+  <hr>
+  <div class="fit">
+    
+    <div class="row ">
+
+      <div class="col-lg-6">
+        <div class="jumbotron att-test">
+          <h2>Attendance</h2><hr>
+          <table class="index">
+            <thead>
+              <th>Date</th>
+              <th>Status</th>
+            </thead>
+            <% @subject_class.attendances.each do |attendance| %>
+              <tr>
+                <td><%= attendance.date_created %></td>
+                <td><%= check_if_present(attendance) %></td>
+              </tr>
+            <% end %> 
+          </table>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="jumbotron att-test">
+          <h2>Tests</h2><hr>
+          <table class="index">
+            <thead>
+              <th>Test</th>
+              <th>Test type</th>
+              <th>Score</th>
+              <th>Percentage</th>
+            </thead>
+            <% @subject_class.tests.each do |t| %>
+              <tr>
+                <td><%= link_to t.name, dashboard_test_dashboard_path(test_id: t.id) %></td>
+                <td><%= t.test_detail.name %></td>
+                <td><%= get_score(t) %></td>
+                <td><%= get_percentage(t) %></td>
+              </tr>
+            <% end %> 
+          </table>
+        </div>    
+      </div>  
+      
+    </div>
+  </div>
+</div>
