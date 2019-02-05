@@ -63,7 +63,8 @@
   <div class="instructor-classes">
 
     <h3>Classes</h3>
-    <%= select_tag :school_year, options_for_select(@school_years, @school_year) %>
+    
+    <%= render 'subject_classes/sem_year_select' %>  
     <%= render partial: 'subject_classes/display_classes', locals: {classes: @subject_classes} %>
   </div>
 

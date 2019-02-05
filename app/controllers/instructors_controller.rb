@@ -11,8 +11,12 @@ class InstructorsController < ApplicationController
   # GET /instructors/1
   # GET /instructors/1.json
   def show
-    @school_years = SubjectClass.distinct.pluck(:school_year)
-    @subject_classes = @instructor.subject_classes
+    @subject_classes = SubjectClass.all
+    if SubjectClass.count != 0
+      @school_year = params[:school_year] || SubjectClass.last.school_year
+      @sem = params[:sem] || '2nd Semister'
+      @subject_classes = SubjectClass.where(school_year: @school_year, sem: @sem, instructor_id: @instructor.id)
+    end
   end
 
   # GET /instructors/new
@@ -70,7 +74,13 @@ class InstructorsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_instructor
-      @instructor = Instructor.find(params[:id])
+      
+      if session[:type] == "2"      
+        @instructor = Instructor.find(session[:id])
+      else
+        @instructor = Instructor.find(params[:id])
+      end
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

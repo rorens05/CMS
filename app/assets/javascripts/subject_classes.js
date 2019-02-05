@@ -14,7 +14,7 @@ $(document).ready(function(){
     var year_select = document.getElementById("school_year_select");
     var year = year_select.options[year_select.selectedIndex].value;
     window.location.href = 
-    "/subject_classes?school_year=" + year + 
+    window.location.href + "?school_year=" + year + 
     "&sem=" + sem;
   }
 

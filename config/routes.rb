@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'profile/index'
   root 'dashboard#admin'
   get 'dashboard/student'
   get 'dashboard/instructor'
   get 'dashboard/admin'
+  get 'instructors/classes', to: 'instructors#show'
   
   get 'user_authentication/login'
   post 'user_authentication/attempt_login'

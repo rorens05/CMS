@@ -1,0 +1,16 @@
+    <label for="semister">School Year:</label>
+    <select class="target" id="school_year_select">
+      <% SubjectClass.select('DISTINCT school_year').each do |school_year| %>
+        <option value="<%= school_year.school_year %>" 
+          <%= choose_selected(school_year.school_year, @school_year) %> >
+          <%= school_year.school_year %>-<%= school_year.school_year.to_i + 1 %>
+        </option>
+      <% end %>
+    </select>
+
+    <label for="semister" >Semister:</label>
+    <select class="target" id="sem_select">
+      <option value="1st Semister" <%= choose_selected("1st Semister", @sem) %> >1st Semister</option>
+      <option value="2nd Semister" <%= choose_selected("2nd Semister", @sem) %> >2nd Semister</option>
+      <option value="Summer" <%= choose_selected("Summer", @sem) %> >Summer</option>
+    </select>

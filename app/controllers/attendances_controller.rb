@@ -11,7 +11,7 @@ class AttendancesController < ApplicationController
   # GET /attendances/1
   # GET /attendances/1.json
   def show
-    @attendance_details = @attendance.attendance_details
+    @attendance_details = @attendance.attendance_details  
   end
 
   # GET /attendances/new
@@ -100,6 +100,11 @@ class AttendancesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_attendance
       @attendance = Attendance.find(params[:id])
+      if session[:type] == "2"
+        if @attendance.subject_class.instructor_id.to_s != session[:id].to_s
+          redirect_to "/404.html"
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
