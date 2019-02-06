@@ -2,19 +2,19 @@ $(document).ready(function(){
 
   function setActive(){
     // /users.json
-    var request = new XMLHttpRequest();
-    request.open('GET', "/users");
+    // var request = new XMLHttpRequest();
+    // request.open();
 
-    request.onload = function(){
-      var users = JSON.parse(request.responseText);
-      console.log(users)
-    };
+    // request.onload = function(){
+    //   // var users = JSON.parse();
+    //   console.log(request.responseText)
+    // };
 
-    request.onerror = function(){
-      console.log("yep");
-    };
-    request.send();
-    console.log("your active..");
+    // request.onerror = function(){
+    //   console.log("yep");
+    // };
+    // request.send();
+    // console.log("your active..");
   }
 
   setActive(); // This will run on page load
