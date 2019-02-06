@@ -1,7 +1,11 @@
 <div class="class-header"></div>
   <% if subject_class.instructor.image %>
     <div class="class-image">
-      <%= image_tag subject_class.instructor.image %>
+      <% if subject_class.instructor.image.attachment %>
+        <%= image_tag subject_class.instructor.image %>
+      <% else %>
+        <%= image_tag "images/cslogo.png" %>
+      <% end %>
       <%= link_to subject_class.instructor.name, subject_class.instructor %>
     </div>
   <% end %>

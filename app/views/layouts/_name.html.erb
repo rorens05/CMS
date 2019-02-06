@@ -3,7 +3,9 @@
   <div class="header-icon">
     <%= image_tag current_user.image %>
   </div>
- <% else %> 
-  <span class="fa fa-user"></span>
+ <% else %>  
+  <div class="header-icon">
+    <%= image_tag '\images\cslogo' %>
+  </div>
  <% end %>
   <%= current_user.name %>
