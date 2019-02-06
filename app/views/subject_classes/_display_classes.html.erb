@@ -7,7 +7,7 @@
         <% if c.instructor.image.attachment %>
           <%= image_tag c.instructor.image.variant(resize: "60x60") %><br/>   
         <% else %>
-          <%= image_tag "\images\cslogo.png"%>
+          <%= render 'subject_classes/image' %>
         <% end %>     
         </div>  
       <p><strong><%= link_to c.subject.subject_code , c %></strong></p>
