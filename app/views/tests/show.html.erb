@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <div class="classes-show no-radius">
   <%= render partial: 'subject_classes/class_details', locals: {subject_class: @subject_class} %>
 
@@ -37,8 +36,9 @@
       <strong>Subject class:</strong>
       <%= @test.subject_class_id %>
     </p>
-
-    <%= link_to 'Exam Panel', ongoing_exam_start_exam_path(id: @test.id) %> |
+    <% if @test.is_online %>
+      <%= link_to 'Exam Panel', ongoing_exam_start_exam_path(id: @test.id) %> |
+    <% end %>    
     <%= link_to 'Edit', edit_test_path(@test) %> |
     <%= link_to 'Destroy', @test, method: :delete, data: { confirm: 'Are you sure?' } %> |
     <a href="/tests?subject_class_id=<%= @test.subject_class_id %>">back</a>

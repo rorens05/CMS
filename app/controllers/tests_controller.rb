@@ -40,8 +40,10 @@ class TestsController < ApplicationController
       if @test.save 
 
         @students = @test.subject_class.students #create student test result and set to zero to be edited by instructor
+        
         @students.each do |student|
-          TestResult.create(test_id: @test.id, student_id: student.id, score: 0)
+          TestResult.create(test_id: @test.id, student_id: student.id, score: 0, status: TestResult::STATUS_LIST[0], last_time_online: Date.today, time_finished: Date.today)
+        
         end        
 
         format.html { redirect_to @test, notice: 'Test was successfully created.' }

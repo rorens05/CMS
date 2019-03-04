@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_151315) do
+ActiveRecord::Schema.define(version: 2019_03_04_154017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,8 +122,6 @@ ActiveRecord::Schema.define(version: 2019_03_04_151315) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "test_type"
-    t.string "status"
-    t.datetime "time_finished"
   end
 
   create_table "test_results", force: :cascade do |t|
@@ -132,6 +130,10 @@ ActiveRecord::Schema.define(version: 2019_03_04_151315) do
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
+    t.datetime "last_time_online"
+    t.datetime "time_finished"
+    t.string "reason"
     t.index ["student_id"], name: "index_test_results_on_student_id"
     t.index ["test_id"], name: "index_test_results_on_test_id"
   end

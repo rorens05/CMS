@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'ongoing_exam/get_exam_results'
   get 'ongoing_exam/start_exam'
   get 'ongoing_exam/exam'
   get 'profile/index'
