@@ -41,6 +41,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # # ADDED GEMS
 # gem 'bootstrap-sass', '~> 3.4.0'
 # gem 'sassc-rails', '>= 2.0.0'
+
 gem 'bootstrap', '~> 4.2.1'
 gem 'awesome_print', '~> 1.8'
 gem 'font-awesome-sass', '~> 5.6.1'
@@ -50,14 +51,17 @@ gem "mini_magick"
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'seed_dump'
-group :development, :test do
+gem "chartkick"
+
+group :development, :test do  
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

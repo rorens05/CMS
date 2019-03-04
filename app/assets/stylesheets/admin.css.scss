@@ -182,6 +182,41 @@ table.index-table tr,table.index-table th, table.index-table td{
   font-size: 20px;
 }
 
+.counts{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  div{
+    border-right: 1px solid rgb(179, 179, 179);
+    margin-top: 10px;
+  }
+  div:last-child{
+    border-right: 1px solid rgb(255, 255, 255);
+  }
+  
+  p{
+    margin:0 !important;
+    text-align: center
+  }
+
+  small{
+    text-align: center;
+    display: block;
+  }
+  
+  h2{
+    font-weight: bold;
+    text-align: center;
+    color: #0F97DE;
+  }
+}
+
+.dashboard-items{
+  box-sizing: border-box;
+  background-color: white;
+  border: 1px solid rgb(202, 202, 202);
+  padding: 10px;
+}
+
 .white{
   background-color: white !important;
 }
@@ -191,6 +226,18 @@ table.index-table tr,table.index-table th, table.index-table td{
   color:white;
 }
 
+form{
+  label{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  input[type="text"],input[type="number"], #test_test_type_id, #subject_class_subject_id{
+    width: 100%;
+    padding: 5px;
+    border: 2px solid rgb(199, 199, 199)
+  }
+}
 .admin-box h2 a:hover{
   text-decoration: none;
   color:skyblue;

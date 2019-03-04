@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
  
-  layout :set_layout
+  layout :set_layout, except: [:start_exam]
 
   before_action :require_login, except: [:login, :logout, :attempt_login] 
   before_action :redirect_to_current_user, only: [:login , :attempt_login] 

@@ -1,3 +1,38 @@
-<h1>Dashboard#instructor</h1>
-<p>Find me in app/views/dashboard/instructor.html.erb</p>
-<p id="notice"><%= notice %></p>
+
+<div class="row counts">
+  <div class="col-sm-3">
+    <p>TOTAL STUDENTS</p>
+    <h2><%= Student.all.count %></h2>  
+    <small>Total number of student this school year</small>  
+  </div>
+
+  <div class="col-sm-3">
+    <p>Total Students</p>
+    <h2><%= Student.all.count %></h2>  
+  </div>
+
+  <div class="col-sm-3">
+    <p>Total Students</p>
+    <h2><%= Student.all.count %></h2>  
+  </div>
+
+  <div class="col-sm-3">
+    <p>Total Students</p>
+    <h2><%= Student.all.count %></h2>  
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-8">
+    <div class="container  dashboard-items">
+      
+      <%= column_chart ClassEnrollment.joins(:subject_class).where(subject_classes: {instructor_id: session[:id], school_year: "2018"}).group(:subject_class_id).count.map {|k,v| [SubjectClass.find(k).subject.name, v]} %>
+
+    </div>
+  </div>
+  <div class="col-sm-4 ">
+    <div class="container dashboard-items">
+      <%= pie_chart @customized %>
+    </div>
+  </div>
+</div>

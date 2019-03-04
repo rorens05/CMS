@@ -1,3 +1,46 @@
-<h1>Dashboard#admin</h1>
-<p>Find me in app/views/dashboard/admin.html.erb</p>
-<p id="notice"><%= notice %></p>
+
+<div class="row counts">
+  <div class="col-sm-3">
+    <p>STUDENTS</p>
+    <h2><%= Student.all.count %></h2>  
+    <small>Total number of student this school year</small>  
+  </div>
+
+  <div class="col-sm-3">
+    <p>CLASSES</p>
+    <h2><%= SubjectClass.all.count %></h2>  
+    <small>Total number of Classes this school year</small>  
+  </div>
+
+  <div class="col-sm-3">
+    <p>INSTRUCTORS</p>
+    <h2><%= Instructor.all.count %></h2>  
+    <small>All Instructors</small> 
+  </div>
+
+  <div class="col-sm-3">
+    <p>Total Students</p>
+    <h2><%= Student.all.count %></h2>  
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-8">
+    <div class="container  dashboard-items">
+      <h4>Student Report per Course</h4><hr>
+      <%= column_chart Student.group(:course).count %>
+    </div>
+  </div>
+  <div class="col-lg-4 ">
+    <div class="container dashboard-items">
+      <h4>Student Report per Course</h4><hr>
+      <% customized = Student.group(:year).count %>
+      <% customized = customized.to_h %>
+      <% customized["1st year"] = customized.delete 1 %>
+      <% customized["2nd year"] = customized.delete 2 %>
+      <% customized["3rd year"] = customized.delete 3 %>
+      <% customized["4th year"] = customized.delete 4 %>
+      <%= pie_chart customized %>
+    </div>
+  </div>
+</div>

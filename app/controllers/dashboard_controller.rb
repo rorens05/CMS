@@ -7,9 +7,21 @@ class DashboardController < ApplicationController
   end
 
   def instructor
+    @customized = Student.group(:year).count
+    @customized = @customized.to_h
+    @customized["1st year"] = @customized.delete 1
+    @customized["2nd year"] = @customized.delete 2
+    @customized["3rd year"] = @customized.delete 3
+    @customized["4th year"] = @customized.delete 4
   end
 
   def admin
+    @customized = Student.group(:year).count
+    @customized = @customized.to_h
+    @customized["1st year"] = @customized.delete 1
+    @customized["2nd year"] = @customized.delete 2
+    @customized["3rd year"] = @customized.delete 3
+    @customized["4th year"] = @customized.delete 4
   end
 
   def classes

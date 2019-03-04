@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_182812) do
+ActiveRecord::Schema.define(version: 2019_03_04_151315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_182812) do
     t.integer "subject_class_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
     t.index ["student_id", "subject_class_id"], name: "index_class_enrollments_on_student_id_and_subject_class_id"
   end
 
@@ -121,6 +122,8 @@ ActiveRecord::Schema.define(version: 2019_02_05_182812) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "test_type"
+    t.string "status"
+    t.datetime "time_finished"
   end
 
   create_table "test_results", force: :cascade do |t|
@@ -142,6 +145,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_182812) do
     t.integer "subject_class_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
   end
 
   create_table "users", force: :cascade do |t|

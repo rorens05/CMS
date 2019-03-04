@@ -1,0 +1,86 @@
+// Place all the styles related to the OngoingExam controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ongoing-exam-container{
+  width: 98%;
+  margin: 1%;
+  border: 1px solid rgb(221, 221, 221);
+  padding: 0;
+  
+  .exam-header{
+    padding: 5px !important;
+    background-color: #0F97DE;
+    p{
+      padding: 0 !important;
+      margin: 0 !important;
+      color: white
+    }
+    h3{
+      font-weight: bold;
+      color: white;
+      overflow: auto;
+
+      
+    }
+    span{
+      float:right;
+      padding-right: 10px;
+      font-size: 20px;
+      font-weight: normal
+    }
+  }
+ 
+  .instructor{
+    padding: 10px;
+    .info{
+      overflow: auto;
+    }
+    .item{
+      float:left;
+      margin: 10px;
+    }
+    img{
+      width: 150px;
+      
+    }
+    p{
+      font-size: 20px;
+      margin-bottom: 0 !important;
+    }
+    th{
+      width: 150px;
+    }
+  }
+
+  .status{
+    width: 100%;
+    padding-left: 20px;
+    .time{
+      display: inline;
+    }
+    a{
+      width: 150px;
+    }
+  }
+
+  .student-list-exam{
+    overflow: auto;
+    .student-status{
+      width: 300px;
+      border: 1px solid rgb(211, 211, 211);
+      float: left;
+      margin: 5px;
+      p{
+        padding: 0 !important;
+        margin: 0 !important;
+        margin-left: 5px !important;
+      }
+      h5{
+        background-color: #0F97DE;
+        padding: 5px;
+        color: white;
+      }
+    }
+  }
+}

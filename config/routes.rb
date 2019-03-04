@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'ongoing_exam/start_exam'
+  get 'ongoing_exam/exam'
   get 'profile/index'
   root 'dashboard#admin'
   get 'dashboard/student'

@@ -24,6 +24,11 @@
     </p>
 
     <p>
+      <strong>Status:</strong>
+      <%= @test.status %>
+    </p>
+
+    <p>
       <strong>No of items:</strong>
       <%= @test.no_of_items %>
     </p>
@@ -33,6 +38,7 @@
       <%= @test.subject_class_id %>
     </p>
 
+    <%= link_to 'Exam Panel', ongoing_exam_start_exam_path(id: @test.id) %> |
     <%= link_to 'Edit', edit_test_path(@test) %> |
     <%= link_to 'Destroy', @test, method: :delete, data: { confirm: 'Are you sure?' } %> |
     <a href="/tests?subject_class_id=<%= @test.subject_class_id %>">back</a>
