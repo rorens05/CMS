@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :test_questions
+  get 'ongoing_exam/update_test_status'
   get 'ongoing_exam/get_exam_results'
   get 'ongoing_exam/start_exam'
   get 'ongoing_exam/exam'

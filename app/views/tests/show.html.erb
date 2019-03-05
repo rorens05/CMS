@@ -9,7 +9,7 @@
     
     <p>
       <strong>Test type:</strong>
-      <%= @test.test_type_id %>
+      <%= @test.test_detail.name %>
     </p>
 
     <p>
@@ -33,11 +33,16 @@
     </p>
 
     <p>
-      <strong>Subject class:</strong>
-      <%= @test.subject_class_id %>
+      <strong>Duration:</strong>
+      <%= @test.duration.to_s + " min" %>
     </p>
-    <% if @test.is_online %>
+
+    <% if @test.is_online %> 
+
       <%= link_to 'Exam Panel', ongoing_exam_start_exam_path(id: @test.id) %> |
+      <%= render '/tests/view_test_questions' %>
+      <%= render '/tests/insert_test_question' %>
+      <%= link_to 'Insert Test Question', ongoing_exam_start_exam_path(id: @test.id) %> |
     <% end %>    
     <%= link_to 'Edit', edit_test_path(@test) %> |
     <%= link_to 'Destroy', @test, method: :delete, data: { confirm: 'Are you sure?' } %> |

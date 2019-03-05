@@ -19,6 +19,9 @@ class TestsController < ApplicationController
   def show
     @subject_class = @test.subject_class
     @students = @test.subject_class.students.order(:name)
+    @test_questions = @test.test_questions
+    @test_question = TestQuestion.new
+    @test_question.test_id = @test.id
   end
 
   # GET /tests/new
@@ -35,7 +38,11 @@ class TestsController < ApplicationController
   # POST /tests.json
   def create
     @test = Test.new(test_params)
-
+    if @test.is_online  
+      @test.status = "Not Started"  
+    else
+      @test.status = "Ended"      
+    end
     respond_to do |format|
       if @test.save 
 
@@ -118,6 +125,6 @@ class TestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_params
-      params.require(:test).permit(:name, :test_type_id, :schedule, :is_online, :no_of_items, :subject_class_id)
+      params.require(:test).permit(:name, :test_type_id, :schedule, :duration, :is_online, :no_of_items, :subject_class_id)
     end
 end

@@ -1,5 +1,6 @@
 <div class="ongoing-exam-container">
 <input type="hidden" value="<%= @test.id %>" id="test_id">
+<input type="hidden" value="<%= @test.duration %>" id="duration">
 
   <div class="exam-header">
     <h3><%= @test.subject_class.subject.subject_code %> <span><%= @test.subject_class.schedule %></span> </h3>
@@ -24,11 +25,15 @@
           </tr>
           <tr>
             <th>Duration:</th>
-            <td><%= "TODO: Duration" %></td>
+            <td><%= @test.duration.to_s + " minutes" %></td>
           </tr>
           <tr>
             <th>Number of Items:</th>
             <td><%= @test.no_of_items %></td>
+          </tr>
+          <tr>
+            <th>Status:</th>
+            <td id="status"><%= @test.status %></td>
           </tr>
         </table>
       </div>
@@ -37,8 +42,11 @@
 <hr>
   <div class="status">
     <a href="#" class="btn btn-primary btn-sm"> View questions</a>
-    <a href="#" class="btn btn-info btn-sm"> Start</a>
-    <div class="time"><span>Time Remaining: <strong>1 hour 26 min 5 sec</strong></span></div>
+    <span id="action">
+      <a href="#" class="btn btn-info btn-sm" id="start"> Start</a>
+      <a href="#" class="btn btn-danger btn-sm" id="stop"> Stop</a>
+    </span>
+    <div class="time"><span>Time Remaining: <strong id="time"><%= @test.duration.to_s + " min" %></strong></span></div>
   </div><hr>
 
   <div class="student-list-exam">

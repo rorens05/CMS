@@ -37,6 +37,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :duration, "Duration (min)" %>
+    <%= form.number_field :duration, value: 30 %>
+  </div>
+
+  <div class="field">
     <%= form.label :subject_class_id %>
     <%= form.number_field :subject_class_id %>
   </div>

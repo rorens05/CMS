@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_154017) do
+ActiveRecord::Schema.define(version: 2019_03_05_060230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,15 @@ ActiveRecord::Schema.define(version: 2019_03_04_154017) do
     t.string "test_type"
   end
 
+  create_table "test_questions", force: :cascade do |t|
+    t.bigint "test_id"
+    t.text "question"
+    t.text "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_id"], name: "index_test_questions_on_test_id"
+  end
+
   create_table "test_results", force: :cascade do |t|
     t.bigint "test_id"
     t.bigint "student_id"
@@ -148,6 +157,7 @@ ActiveRecord::Schema.define(version: 2019_03_04_154017) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.integer "duration"
   end
 
   create_table "users", force: :cascade do |t|
@@ -168,6 +178,7 @@ ActiveRecord::Schema.define(version: 2019_03_04_154017) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "test_questions", "tests"
   add_foreign_key "test_results", "students"
   add_foreign_key "test_results", "tests"
 end
