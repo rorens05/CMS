@@ -68,10 +68,14 @@
     overflow: auto;
     .student-status{
       width: 300px;
-      height: 140px;
+      height: 150px;
       border: 1px solid rgb(211, 211, 211);
       float: left;
       margin: 5px;
+      input{
+        float: right;
+        margin-right: 20px;
+      }
       p{
         padding: 0 !important;
         margin: 0 !important;

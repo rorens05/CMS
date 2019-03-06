@@ -48,47 +48,53 @@
   </div>
   <hr>
   <div class="fit">
-    
+    <div class="jumbotron att-test">
+      <h2>Attendance</h2><hr>
+      <table class="index">
+        <thead>
+          <th>Date</th>
+          <th>Status</th>
+        </thead>
+        <% @subject_class.attendances.each do |attendance| %>
+          <tr>
+            <td><%= attendance.date_created %></td>
+            <td><%= check_if_present(attendance) %></td>
+          </tr>
+        <% end %> 
+      </table>
+    </div>
+
+    <div class="jumbotron att-test">
+      <h2>Tests</h2><hr>
+      <table class="index">
+        <thead>
+          <th>Test</th>
+          <th>Test type</th>
+          <th>is_online</th>
+          <th>Status</th>
+          <th>Score</th>
+          <th>Percentage</th>
+        </thead>
+        <% @subject_class.tests.each do |t| %>
+          <tr>
+            <td><%= link_to t.name, dashboard_test_dashboard_path(test_id: t.id) %></td>
+            <td><%= t.test_detail.name %></td>
+            <td><%= t.is_online %></td>
+            <td><%= t.status %></td>
+            <td><%= get_score(t) %></td>
+            <td><%= get_percentage(t) %></td>
+          </tr>
+        <% end %> 
+      </table>
+    </div> 
     <div class="row ">
 
       <div class="col-lg-6">
-        <div class="jumbotron att-test">
-          <h2>Attendance</h2><hr>
-          <table class="index">
-            <thead>
-              <th>Date</th>
-              <th>Status</th>
-            </thead>
-            <% @subject_class.attendances.each do |attendance| %>
-              <tr>
-                <td><%= attendance.date_created %></td>
-                <td><%= check_if_present(attendance) %></td>
-              </tr>
-            <% end %> 
-          </table>
-        </div>
+        
       </div>
 
       <div class="col-lg-6">
-        <div class="jumbotron att-test">
-          <h2>Tests</h2><hr>
-          <table class="index">
-            <thead>
-              <th>Test</th>
-              <th>Test type</th>
-              <th>Score</th>
-              <th>Percentage</th>
-            </thead>
-            <% @subject_class.tests.each do |t| %>
-              <tr>
-                <td><%= link_to t.name, dashboard_test_dashboard_path(test_id: t.id) %></td>
-                <td><%= t.test_detail.name %></td>
-                <td><%= get_score(t) %></td>
-                <td><%= get_percentage(t) %></td>
-              </tr>
-            <% end %> 
-          </table>
-        </div>    
+           
       </div>  
       
     </div>

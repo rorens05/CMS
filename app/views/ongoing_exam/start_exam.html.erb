@@ -41,7 +41,53 @@
   </div>
 <hr>
   <div class="status">
-    <a href="#" class="btn btn-primary btn-sm"> View questions</a>
+    <!-- Button trigger modal -->
+<a href="#" data-toggle="modal" class="btn btn-primary btn-sm" data-target="#exampleModal">
+  View questions
+</a> 
+ 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Test questions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container overflow-auto">
+        
+          <table class="index question-table">
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>Answer</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @test_questions.each do |test_question| %>
+                <tr>
+                  <td><%= test_question.question %></td>
+                  <td><%= test_question.answer %></td>
+                  <td><%= link_to 'Edit', edit_test_question_path(test_question) %></td>
+                  <td><%= link_to 'Destroy', test_question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     <span id="action">
       <a href="#" class="btn btn-info btn-sm" id="start"> Start</a>
       <a href="#" class="btn btn-danger btn-sm" id="stop"> Stop</a>

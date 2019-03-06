@@ -1,3 +1,8 @@
+<%= form_tag "#" do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "submit" %>
+<% end %>
+
 <%= form_with(model: test_question, local: true) do |form| %>
   <% if test_question.errors.any? %>
     <div id="error_explanation">
@@ -11,11 +16,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :test_id %>
-    <%= form.text_field :test_id %>
-  </div>
-
+  <%= form.hidden_field :test_id %>
   <div class="field">
     <%= form.label :question %>
     <%= form.text_area :question %>

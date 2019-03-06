@@ -140,6 +140,10 @@ table.index-table tr,table.index-table th, table.index-table td{
   border: 1px solid black;
 }
 
+table.question-table td{
+  white-space:pre;
+}
+
 .admin-box{
   display: inline-block;
   width: 100%;
@@ -640,6 +644,7 @@ form{
 
 textarea{
   width: 100%;
+  height: 200px;
 }
 
 .class-image img{

@@ -42,7 +42,6 @@
       <%= link_to 'Exam Panel', ongoing_exam_start_exam_path(id: @test.id) %> |
       <%= render '/tests/view_test_questions' %>
       <%= render '/tests/insert_test_question' %>
-      <%= link_to 'Insert Test Question', ongoing_exam_start_exam_path(id: @test.id) %> |
     <% end %>    
     <%= link_to 'Edit', edit_test_path(@test) %> |
     <%= link_to 'Destroy', @test, method: :delete, data: { confirm: 'Are you sure?' } %> |

@@ -1,3 +1,13 @@
+
+
+<span>Upload Excel Test Questions</span>
+<%= form_tag import_test_path, multipart: true do %>
+  <input type="hidden" name="id" value="<%= @test.id %>">
+  <%= file_field_tag :file %>
+  <%= submit_tag "import" %>
+<% end %>
+
+
 <%= form_with(model: test_question, local: true) do |form| %>
   <% if test_question.errors.any? %>
     <div id="error_explanation">
@@ -10,6 +20,8 @@
       </ul>
     </div>
   <% end %>
+
+
     <%= form.hidden_field :test_id %>
 
   <div class="field">

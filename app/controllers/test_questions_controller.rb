@@ -28,7 +28,10 @@ class TestQuestionsController < ApplicationController
 
     respond_to do |format|
       if @test_question.save
-        format.html { redirect_to @test_question, notice: 'Test question was successfully created.' }
+        test = @test_question.test
+        test.no_of_items = @test_question.test.test_questions.count
+        test.save
+        format.html { redirect_to @test_question.test, notice: 'Test question was successfully created.' }
         format.json { render :show, status: :created, location: @test_question }
       else
         format.html { render :new }
@@ -42,7 +45,11 @@ class TestQuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @test_question.update(test_question_params)
-        format.html { redirect_to @test_question, notice: 'Test question was successfully updated.' }
+        
+        test = @test_question.test
+        test.no_of_items = @test_question.test.test_questions.count
+        test.save
+        format.html { redirect_to @test_question.test, notice: 'Test question was successfully updated.' }
         format.json { render :show, status: :ok, location: @test_question }
       else
         format.html { render :edit }
@@ -55,8 +62,11 @@ class TestQuestionsController < ApplicationController
   # DELETE /test_questions/1.json
   def destroy
     @test_question.destroy
+    test = @test_question.test
+    test.no_of_items = @test_question.test.test_questions.count
+    test.save
     respond_to do |format|
-      format.html { redirect_to test_questions_url, notice: 'Test question was successfully destroyed.' }
+      format.html { redirect_to test, notice: 'Test question was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,2 +1,53 @@
-<h1>OngoingExam#exam</h1>
-<p>Find me in app/views/ongoing_exam/exam.html.erb</p>
+<div class="container-fluid student-exam">
+<input type="hidden" id="testResultId" value="<%= @testResult.id %>">
+<input type="hidden" id="status" value="<%= @testResult.status %>">
+<input type="hidden" id="titleExam" value="exam">
+
+  <div class="headers">
+    <h2><%= @test.subject_class.subject.subject_code + " (" + @test.subject_class.subject.name + ")"%> <span><%= @test.subject_class.schedule %></span></h2>
+    <p><%= @test.name %></p>
+  </div>
+  <div class="exam-info">
+    <table>
+      <tr>
+        <th>Test type: </th>
+        <td><%= @test.test_detail.name %></td>   
+        <th>Online: </th>
+        <td><%= @test.is_online %></td>    
+      </tr>
+      <tr>
+        <th>Schedule: </th>
+        <td><%= @test.schedule %></td>   
+        <th>Number of Items: </th>
+        <td><%= @test.no_of_items %></td>    
+      </tr>
+      <tr>
+        <th>Status: </th>
+        <td><%= @test.status %></td>   
+        <th>Duration: </th>
+        <td><%= @test.duration.to_s + " minutes" %></td>    
+      </tr>
+    </table>
+    <hr>
+    <p id="statusInfo"></p>
+    <span id="action">
+      <a href="#" class="btn btn-primary btn-sm exam-btn" id="examStart"> Start</a>
+      <a href="#" class="btn btn-danger btn-sm exam-btn" id="submitExam"> Finished</a>
+      <span>Time Remaining: </span><span id="exam-time">0h 20min 5sec</span>
+    </span>
+  </div>
+
+</div>
+
+<div class="container-fluid student-exam">
+  <div class="exam-info" id="examPanel">
+    <input type="hidden" id="testQuestionId" value="">
+    <h4><pre><%= @testResult.test_answers.count == 0 ? "no question" : @testResult.test_answers.first.test_question.question %></pre></h4>
+    <textarea name="answer" id="answer"></textarea>
+    <a href="#" class="btn btn-primary btn-sm exam-btn" id="answerSubmit">next</a>
+  </div>
+  <div class="exam-info" id="examResult">
+    
+  </div>
+  
+</div>

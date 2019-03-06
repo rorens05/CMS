@@ -11,9 +11,11 @@ module DashboardHelper
   def get_percentage(test)
     score = get_score(test)
     no_items = test.no_of_items
-    percentage = (score.to_f / no_items) * 100
-    return percentage.to_i.to_s + "%"
+    percentage = ((score.to_f / no_items) * 35) + 65 #score/total * 35 + 65
+    rating = percentage > 74 ? "Passed" : "Failed"
+    return percentage.to_i.to_s + "% " + rating
     
+
   end
 
   def get_score(test)    

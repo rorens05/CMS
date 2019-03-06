@@ -29,5 +29,34 @@
       <th>Is Online: </th>
       <td><%= @test.is_online %></td>
     </tr>
+    <tr>
+      <th>Status: </th>
+      <td><%= @test.status %></td>
+    </tr>
   </table><hr>
+  <% if @test.status == "Ongoing" %>
+    <a href="/ongoing_exam/exam?id=<%= @test.id %>" class="btn btn-primary">Start Exam</a>
+  <% elsif @test.status == "Ended"  %>
+  
+    <% test_result = TestResult.where(test_id: @test.id, student_id: session[:id]).first%>
+    <h3>Your score: <%= test_result.score %> out of <%= @test.no_of_items %></h3>
+    <h4>Percentage: <%= get_percentage(@test) %></h4>
+    <table class="index">
+      <thead>
+        <th>Question</th>
+        <th>Correct Answer</th>
+        <th>Your answer</th>
+        <th>Checking</th>
+      </thead>
+      <% @test.test_questions.each do |tq| %>
+        <tr>
+          <td><pre><%= tq.question %></pre></td>
+          <td><%= tq.answer %></td>
+          <% test_answer = TestAnswer.where(test_result_id: test_result.id, test_question_id: tq.id).first%>
+          <td><%= test_answer ? test_answer.answer : "" %></td>
+          <td><%= test_answer ? test_answer.check ? "Correct" : "Wrong" : "Wrong" %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 </div>

@@ -49,8 +49,19 @@ class TestsController < ApplicationController
         @students = @test.subject_class.students #create student test result and set to zero to be edited by instructor
         
         @students.each do |student|
-          TestResult.create(test_id: @test.id, student_id: student.id, score: 0, status: TestResult::STATUS_LIST[0], last_time_online: Date.today, time_finished: Date.today)
-        
+          result = TestResult.new(test_id: @test.id, student_id: student.id, score: 0, status: TestResult::STATUS_LIST[0], last_time_online: Date.today, time_finished: Date.today, reason: TestResult::REASON_LIST[3])
+          if result.save
+            puts "=============================================="
+            puts "test result created"
+            puts "=============================================="
+          else
+            puts "=============================================="
+            puts result.errors.full_messages
+            puts "=============================================="
+            
+          end
+          
+          
         end        
 
         format.html { redirect_to @test, notice: 'Test was successfully created.' }
@@ -105,6 +116,12 @@ class TestsController < ApplicationController
 
     flash[:notice] = "Result Updated Successfully!"
     redirect_to test_path(@test)
+  end
+
+
+  def import
+    notice = TestQuestion.import(params[:file], params[:id])
+    redirect_to '/tests/' + params[:id], notice: notice
   end
 
   private

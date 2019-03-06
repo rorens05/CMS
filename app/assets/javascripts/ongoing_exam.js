@@ -5,12 +5,14 @@ $(document).ready(function(){
   $("#stop").hide();
   if(window.location.pathname == "/ongoing_exam/start_exam"){
     function updateStudent(){
+      console.log("/ongoing_exam/get_exam_results?id=" + $("#test_id").val());
       $.get("/ongoing_exam/get_exam_results?id=" + $("#test_id").val(), function(data, status){
-        console.log("name: " + data.data[0].name + "\nStatus: " + status);
+        console.log("message: " + data.message + "\nStatus: " + status);
           var contents = "";
           for(var i = 0; i < data.data.length; i++){
             var temp = "<div class='student-status'>";
-            temp = temp + "<h5>" + data.data[i].name + data.data[i].id + "</h5>";
+            temp = temp + "<h5>" + data.data[i].name + "</h5>";
+            temp = temp + `<input type='hidden' value='${data.data[i].id}' class='tempid'>`;
             var statusColor = "black";
 
             if(data.data[i].status == "Online"){
@@ -34,14 +36,25 @@ $(document).ready(function(){
             if(data.data[i].time_finished != null){
               temp = temp + "<p>time finished: <strong>Change tab</strong></p>";
             }
-            temp = temp + `<p>Score: <strong>${data.data[i].score}</strong></p></div>`;
+            temp = temp + `<p>Score: <strong>${data.data[i].score}</strong></p>`;
+            if (data.data[i].status == "Paused") {
+              temp = temp + `<input type='submit' value="resume" class="btn btn-warning btn-sm btnResume">`;
+            }
+            temp = temp + `</div>`;
             contents = contents + temp;
           }
         $(".student-list-exam").html(contents)
+        $(".btnResume").click(function(){
+          var testResultId = $(".btnResume").parent("div").children(".tempid").val();
+          $.get(`/ongoing_exam/update_status?id=${testResultId}&status=Online&reason=`, function(data, status){
+            console.log("Start exam status: " + data.message);
+          });
+
+        });
       });
     }
     updateStudent();
-    setInterval( updateStudent, 3000);
+    setInterval( updateStudent, 500);
   }
     // Set the date we're counting down to
     var today = new Date();
@@ -92,7 +105,7 @@ $(document).ready(function(){
       });
 
     });
-
+    
 
     $("#start").click(function(){
       $("#stop").show();
@@ -108,4 +121,19 @@ $(document).ready(function(){
         $("#status").html("Ongoing");
       });
     });
+
+    if($("#status").html() == "Ongoing"){
+      $("#stop").show();
+      $("#start").hide();
+      today = new Date();
+      duration = $("#duration").val();
+      today.setMinutes(today.getMinutes() + Number(duration))
+      console.log(duration)
+      countDownDate = today.getTime();
+      x = setInterval(startTimer, 1000)
+      $.get(`/ongoing_exam/update_test_status?test_id=${$("#test_id").val()}&status=Ongoing`, function(data, status){
+        // alert("Message: " + data.message + "\nStatus: " + status);
+        $("#status").html("Ongoing");
+      });
+    }
 });
