@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :test_answers
   resources :test_questions 
+  get 'ongoing_exam/synchronize_time'
+  get 'ongoing_exam/get_test'
   get 'ongoing_exam/update_status'
   post 'ongoing_exam/check_answer'
   get 'ongoing_exam/get_test_answer_sheet'
@@ -9,6 +11,10 @@ Rails.application.routes.draw do
   get 'ongoing_exam/get_exam_results'
   get 'ongoing_exam/start_exam'
   get 'ongoing_exam/exam'
+  get 'profile/edit'
+  post 'profile/save_new_password'
+  get 'profile/change_password'
+  post 'profile/update'
   get 'profile/index'
   root 'dashboard#admin'
   get 'dashboard/student'
@@ -36,6 +42,7 @@ Rails.application.routes.draw do
     post :add_student, on: :member
     post :remove_student, on: :member
     get :attendances, on: :member
+    get :summary, on: :member
   end
 
   resources :students do 

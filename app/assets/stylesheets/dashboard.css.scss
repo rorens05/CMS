@@ -30,6 +30,10 @@ table.info{
   }
 }
 
+canvas{
+  height: 400px;
+}
+
 .student-exam{
 
   .headers{
@@ -64,5 +68,17 @@ table.info{
       width: 100px;
     }
   }
-  
+}
+
+.summary-table{
+  th, td{
+    padding: 5px;
+    border: 1px solid rgb(133, 133, 133);
+  }
+  th{
+    text-align: center;
+  }
+  .center-data{
+    text-align:center
+  }
 }

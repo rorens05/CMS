@@ -1,6 +1,8 @@
 class OngoingExamController < ApplicationController
   skip_before_action :verify_authenticity_token, except: [:get_exam_result, :update_test_status]
-  skip_before_action :restrict_student, only: [:exam, :get_test_answer_sheet, :check_answer, :update_status]
+  skip_before_action :restrict_student, only: [:exam, :get_test_answer_sheet, :check_answer, :update_status, :get_test, :synchronize_time]
+  skip_before_action :require_login, only: [:get_test, :synchronize_time]
+  
   layout 'exam'
 
   def start_exam
@@ -108,5 +110,19 @@ class OngoingExamController < ApplicationController
     end
 
 
+  end
+
+  def synchronize_time
+    time = params[:time]
+    id = params[:id]
+    test = Test.find(params[:id])
+    test.remaining_time = time
+    test.save
+    render json: {status: 'success', message: 'time updated'}, status: :ok
+  end
+
+  def get_test
+    test = Test.find(params[:id])
+    render json: {status: 'success', message: "test loaded", data: test}, status: :ok
   end
 end

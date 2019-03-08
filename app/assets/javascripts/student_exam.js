@@ -5,6 +5,16 @@ var finalScore = 0;
 
 $(document).ready(function(){
 
+  function updateTime(){
+    $.get("/ongoing_exam/get_test?id=" + $("#testId").val(), function(data, status){
+      console.log("Data: " + data.data.remaining_time + "\nStatus: " + status);
+      $("#exam-time").html( data.data.remaining_time)
+    });
+  }
+
+  if ($("#titleExam").val() == "exam") {
+    setInterval(updateTime, 1000);
+  }
 
   $(window).blur(function() {
 

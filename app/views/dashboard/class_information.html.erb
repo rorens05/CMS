@@ -65,7 +65,7 @@
     </div>
 
     <div class="jumbotron att-test">
-      <h2>Tests</h2><hr>
+      <h2>Class Standing</h2><hr>
       <table class="index">
         <thead>
           <th>Test</th>
@@ -75,7 +75,9 @@
           <th>Score</th>
           <th>Percentage</th>
         </thead>
-        <% @subject_class.tests.each do |t| %>
+        <% cs = 0 %>
+        <% total = 0%>
+        <% @subject_class.tests.where("test_type_id = 5 or test_type_id = 6 or test_type_id = 7 or test_type_id = 8 or test_type_id = 9").each do |t| %>
           <tr>
             <td><%= link_to t.name, dashboard_test_dashboard_path(test_id: t.id) %></td>
             <td><%= t.test_detail.name %></td>
@@ -84,19 +86,200 @@
             <td><%= get_score(t) %></td>
             <td><%= get_percentage(t) %></td>
           </tr>
+          <% cs = cs + get_score(t) %>
+          <% total = total + t.no_of_items %>
         <% end %> 
+      </table><hr>
+      <h4>Grade: <%= cs %> / <%= total %></h4>
+      <h4>
+        Rating: <%= cs_grade = get_final_percentage_cs(total, cs).round(2) %>
+        <% if get_final_percentage_cs(total, cs) >= 75 %>
+          <span class="text-success">Passed</span>
+        <% else %>
+          <span class="text-danger">Failed</span>
+        <% end %>
+      
+      </h4>
+    </div> 
+
+
+    <div class="jumbotron att-test">
+      <h2>Prelim</h2><hr>
+      <table class="index">
+        <thead>
+          <th>Test</th>
+          <th>Test type</th>
+          <th>is_online</th>
+          <th>Status</th>
+          <th>Score</th>
+          <th>Percentage</th>
+        </thead>
+        <% prelim = 0%>
+        <% prelim_total = 0%>
+        <% @subject_class.tests.where("test_type_id = 1").each do |t| %>
+          <tr>
+            <td><%= link_to t.name, dashboard_test_dashboard_path(test_id: t.id) %></td>
+            <td><%= t.test_detail.name %></td>
+            <td><%= t.is_online %></td>
+            <td><%= t.status %></td>
+            <td><%= get_score(t) %></td>
+            <td><%= get_percentage(t) %></td>
+          </tr>
+          <% prelim = get_score(t) %>
+          <% prelim_total = t.no_of_items %>
+        <% end %> 
+      </table><hr>
+      <h4>Grade: <%= prelim %> / <%= prelim_total %></h4>
+      <h4>
+        Rating: <%= prelim_grade = get_final_percentage_cs(prelim_total, prelim).round(2) %>
+        <% if get_final_percentage_cs(prelim_total, prelim) >= 75 %>
+          <span class="text-success">Passed</span>
+        <% else %>
+          <span class="text-danger">Failed</span>
+        <% end %>      
+      </h4>
+    </div> 
+
+    <div class="jumbotron att-test">
+      <h2>Midterm</h2><hr>
+      <table class="index">
+        <thead>
+          <th>Test</th>
+          <th>Test type</th>
+          <th>is_online</th>
+          <th>Status</th>
+          <th>Score</th>
+          <th>Percentage</th>
+        </thead>
+        <% prelim = 0%>
+        <% prelim_total = 0%>
+        <% @subject_class.tests.where("test_type_id = 2").each do |t| %>
+          <tr>
+            <td><%= link_to t.name, dashboard_test_dashboard_path(test_id: t.id) %></td>
+            <td><%= t.test_detail.name %></td>
+            <td><%= t.is_online %></td>
+            <td><%= t.status %></td>
+            <td><%= get_score(t) %></td>
+            <td><%= get_percentage(t) %></td>
+          </tr>
+          <% prelim = get_score(t) %>
+          <% prelim_total = t.no_of_items %>
+        <% end %> 
+      </table><hr>
+      <h4>Grade: <%= prelim %> / <%= prelim_total %></h4>
+      <h4>
+        Rating: <%= midterm_grade = get_final_percentage_cs(prelim_total, prelim).round(2) %>
+        <% if get_final_percentage_cs(prelim_total, prelim) >= 75 %>
+          <span class="text-success">Passed</span>
+        <% else %>
+          <span class="text-danger">Failed</span>
+        <% end %>      
+      </h4>
+    </div> 
+
+
+    <div class="jumbotron att-test">
+      <h2>Semi Final</h2><hr>
+      <table class="index">
+        <thead>
+          <th>Test</th>
+          <th>Test type</th>
+          <th>is_online</th>
+          <th>Status</th>
+          <th>Score</th>
+          <th>Percentage</th>
+        </thead>
+        <% prelim = 0%>
+        <% prelim_total = 0%>
+        <% @subject_class.tests.where("test_type_id = 3").each do |t| %>
+          <tr>
+            <td><%= link_to t.name, dashboard_test_dashboard_path(test_id: t.id) %></td>
+            <td><%= t.test_detail.name %></td>
+            <td><%= t.is_online %></td>
+            <td><%= t.status %></td>
+            <td><%= get_score(t) %></td>
+            <td><%= get_percentage(t) %></td>
+          </tr>
+          <% prelim = get_score(t) %>
+          <% prelim_total = t.no_of_items %>
+        <% end %> 
+      </table><hr>
+      <h4>Grade: <%= prelim %> / <%= prelim_total %></h4>
+      <h4>
+        Rating: <%= semi_final_grade = get_final_percentage_cs(prelim_total, prelim).round(2) %>
+        <% if get_final_percentage_cs(prelim_total, prelim) >= 75 %>
+          <span class="text-success">Passed</span>
+        <% else %>
+          <span class="text-danger">Failed</span>
+        <% end %>      
+      </h4>
+    </div> 
+
+    
+    <div class="jumbotron att-test">
+      <h2>Finals</h2><hr>
+      <table class="index">
+        <thead>
+          <th>Test</th>
+          <th>Test type</th>
+          <th>is_online</th>
+          <th>Status</th>
+          <th>Score</th>
+          <th>Percentage</th>
+        </thead>
+        <% prelim = 0%>
+        <% prelim_total = 0%>
+        <% @subject_class.tests.where("test_type_id = 4").each do |t| %>
+          <tr>
+            <td><%= link_to t.name, dashboard_test_dashboard_path(test_id: t.id) %></td>
+            <td><%= t.test_detail.name %></td>
+            <td><%= t.is_online %></td>
+            <td><%= t.status %></td>
+            <td><%= get_score(t) %></td>
+            <td><%= get_percentage(t) %></td>
+          </tr>
+          <% prelim = get_score(t) %>
+          <% prelim_total = t.no_of_items %>
+        <% end %> 
+      </table><hr>
+      <h4>Grade: <%= prelim %> / <%= prelim_total %></h4>
+      <h4>
+        Rating: <%= final_grade = get_final_percentage_cs(prelim_total, prelim).round(2) %>
+        <% if get_final_percentage_cs(prelim_total, prelim) >= 75 %>
+          <span class="text-success">Passed</span>
+        <% else %>
+          <span class="text-danger">Failed</span>
+        <% end %>      
+      </h4>
+    </div> 
+
+
+    <div class="jumbotron att-test">
+      <h2>Final Grade</h2><hr>
+      <!--
+        mg = (cs*4 + pe*1 + me*2)/7
+        tg = (cs*4 + se*1 + fe*2)/7
+        fg = (mg + 2ft / 3)
+      -->
+
+      <% mg = (cs_grade * 4 + prelim_grade * 1 + midterm_grade * 2) / 7 %>
+      <% tg = (cs_grade * 4 + semi_final_grade * 1 + final_grade * 2) / 7 %>
+      <% fg = (mg + 2 * tg) / 3 %>
+      <table class="result-summary">
+        <tr>
+          <th>Midterm Grade</th>
+          <td><%= mg.round(2) %> %</td>
+        </tr>
+        <tr>
+          <th>Tentative Final Grade</th>
+          <td><%= tg.round(2) %> %</td>
+        </tr>
+        <tr>
+          <th>Final Grade</th>
+          <td><%= fg.round(2) %> %</td>
+        </tr>
       </table>
     </div> 
-    <div class="row ">
 
-      <div class="col-lg-6">
-        
-      </div>
-
-      <div class="col-lg-6">
-           
-      </div>  
-      
-    </div>
   </div>
 </div>

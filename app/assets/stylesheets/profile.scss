@@ -1,3 +1,69 @@
 // Place all the styles related to the Profile controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.profile{
+  border: 1px solid gray;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  
+  h1{
+    padding: 20px !important;
+    background-color: #e4e4e4;
+    text-shadow: 2px 2px #ffffff;
+  }
+
+  img{
+    display: block;
+    width: 100%;
+    border: 1px solid #e4e4e4;
+    box-shadow: 5px 5px 5px #505050;
+  }
+  .about{
+    padding-bottom: 20px !important;
+    .main-info{
+      border-left: 1px solid gray;
+      border-right: 1px solid gray;
+      h3{
+        font-weight: bold;
+        
+      }
+      th{
+        width: 150px;
+        padding-bottom: 5px;
+      }
+      tr{
+      }
+    }
+
+    .profile-action{
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #0F97DE;
+      box-shadow: 3px 3px 3px #bdbdbd;
+      h4{
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.edit-profile{
+  border: 1px solid gray;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  h1{
+    padding: 20px !important;
+    background-color: #e4e4e4;
+    text-shadow: 2px 2px #ffffff;
+  }
+  form{
+    margin: 20px;
+  }
+  select{
+    max-width: 200px;
+    width: 100%;
+    padding: 5px;
+    border: 2px solid rgb(199, 199, 199)
+  }
+}

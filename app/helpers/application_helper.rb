@@ -8,7 +8,8 @@ module ApplicationHelper
     if image.attachment
       return image
     else
-      return '/images/cslogo.png'
+      return '/images/nif.png'
     end
+    
   end
 end

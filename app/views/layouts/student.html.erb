@@ -12,25 +12,16 @@
     <!-- header -->
     <div class="header">
       <span class="title "></span>
-      <form action="#" class="">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button"><span class="fa fa-search"></span></button>
-          </div>
-        </div>      
-      </form>
       <h3 class="notification"> <%= render '/layouts/name' %></h3>
     </div> 
     <!-- sidebar -->
     <div class="sidebar">
       <ul class="">
         <li><a href="/dashboard/admin"><span class="fa fa-home icon" aria-hidden="true"></span><span class="desc">Dashboard</span></a></li>
-        <li><a href="#"><span class="fa fa-comments icon" aria-hidden="true"></span><span class="desc">Messages</span></a></li>
         <li><a href="/dashboard/classes"><span class="fas fa-desktop icon" aria-hidden="true"></span><span class="desc">Classes</span></a></li>
-        <li><a href="#"><span class="fa fa-chart-bar icon" aria-hidden="true"></span><span class="desc"> Tests</span></a></li>
+        <li><a href="/profile/index"><span class="fa fa-user icon" aria-hidden="true"></span><span class="desc"> Profile</span></a></li>
         <li><a href="#"><span class="fa fa-question-circle icon" aria-hidden="true"></span><span class="desc"> Help</span></a></li>
-        <li><a data-confirm="Are you sure?" data-method="delete" href="/user_authentication/logout" rel="nofollow"><span class="fa fa-home icon" aria-hidden="true"></span>Logout</a></li>
+        <li><a  data-confirm="Are you sure?" data-method="delete" href="/user_authentication/logout" rel="nofollow"><span class="fas fa-sign-out-alt icon" aria-hidden="true"></span><span class="desc"> Logout</span></a></li>
       </ul>
     </div>
     <!-- content -->

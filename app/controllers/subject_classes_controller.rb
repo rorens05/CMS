@@ -1,5 +1,5 @@
 class SubjectClassesController < ApplicationController
-  before_action :set_subject_class, only: [:show, :edit, :update, :destroy, :add_student, :remove_student, :attendances, :new_attendance, :create_attendance]
+  before_action :set_subject_class, only: [:show, :edit, :update, :destroy, :add_student, :remove_student, :attendances, :new_attendance, :create_attendance, :summary]
   
 
   # GET /subject_classes
@@ -115,6 +115,16 @@ class SubjectClassesController < ApplicationController
     
   end
 
+  def summary
+
+    @students = Student.all.order("name")
+    @class_standing_count = 0
+    @class_standing_count = @class_standing_count + Test.where(test_type_id: 9).count
+    @class_standing_count = @class_standing_count + Test.where(test_type_id: 5).count
+    @class_standing_count = @class_standing_count + Test.where(test_type_id: 6).count
+    @class_standing_count = @class_standing_count + Test.where(test_type_id: 7).count
+    @class_standing_count = @class_standing_count + Test.where(test_type_id: 8).count
+  end
 
 
   private

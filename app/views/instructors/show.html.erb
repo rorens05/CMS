@@ -50,9 +50,14 @@
       <tr>
         <th colspan="4">
           <%= link_to 'Edit', edit_instructor_path(@instructor), class: "btn btn-primary new-button" %> 
-          <%= link_to 'Destroy', @instructor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger new-button" %>  
-          <%= link_to 'Reset Password', edit_instructor_path(@instructor), class: "btn btn-info new-button" %> 
-          <%= link_to 'Back', instructors_path, class: "btn btn-secondary new-button" %></th>
+          <% if session[:type] == "1" %>
+            <%= link_to 'Destroy', @instructor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger new-button" %>  
+            <%= link_to 'Reset Password', edit_instructor_path(@instructor), class: "btn btn-info new-button" %> 
+            <%= link_to 'Back', instructors_path, class: "btn btn-secondary new-button" %></th>
+          <% else %>
+          <%= link_to 'Change Password', profile_change_password_path(), class: "btn btn-info new-button" %> 
+          <% end %>
+          
         <th>
           
       </th>

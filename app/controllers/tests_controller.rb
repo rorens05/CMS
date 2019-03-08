@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :set_test, only: [:show, :edit, :update, :destroy,]
+  before_action :set_test, only: [:show, :edit, :update, :destroy, :summary]
   before_action :set_subject_class, only: [:index, :new]
 
   # GET /tests
@@ -117,6 +117,7 @@ class TestsController < ApplicationController
     flash[:notice] = "Result Updated Successfully!"
     redirect_to test_path(@test)
   end
+
 
 
   def import

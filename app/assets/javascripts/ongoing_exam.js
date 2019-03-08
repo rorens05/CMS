@@ -1,5 +1,8 @@
 var template = "<div class='student-status'><h5>Laurence Bautista</h5><p>status: <strong>Ongoing</strong></p><p>reason: <strong>Change tab</strong></p><p>time finished: <strong>Change tab</strong></p><p>Score: <strong>100</strong></p></div>"
-
+var countDownDate = new Date().getTime();
+var mdate = moment('2016-01-01');
+var stime = mdate.format("MMM DD, YYYY h:mm:ss");
+console.log("date " + stime);
 $(document).ready(function(){
 
   $("#stop").hide();
@@ -77,10 +80,16 @@ $(document).ready(function(){
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
         
-      // Output the result in an element with id="demo"
-      document.getElementById("time").innerHTML = hours + "h "
+      var myTime = hours + "h "
       + minutes + "m " + seconds + "s ";
-        
+      // Output the result in an element with id="demo"
+      document.getElementById("time").innerHTML = myTime;
+      
+      //insert to database remaining time hours + "h " + minutes + "m " + seconds + "s "
+      $.get(`/ongoing_exam/synchronize_time?id=${$("#test_id").val()}&time=${myTime}`, function(data, status){
+        console.log("current time: " + data.message);
+      });
+
       // If the count down is over, write some text 
       if (distance < 0) {
         clearInterval(x);
@@ -103,7 +112,6 @@ $(document).ready(function(){
         alert("Message: " + data.message);
         $("#status").html("Ended");
       });
-
     });
     
 

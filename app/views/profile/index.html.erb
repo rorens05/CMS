@@ -1,2 +1,65 @@
-<h1>Profile#index</h1>
-<p>Find me in app/views/profile/index.html.erb</p>
+<%= flash[:notice] ? flash[:notice] : "" %>
+<div class="profile container">
+  <h1><%= @student.name %> Profile</h1>
+  <div class="container about">
+    <div class="row">
+      <div class="col-sm-3">
+        <%= image_tag verify_image(@student.image) %>
+      </div>
+      <div class="col-sm-6 main-info">
+        <h3>Student Information</h3>
+        <table>
+          <tr>
+            <th>Student No:</th>
+            <td><%= @student.student_no %></td>            
+          </tr>
+          <tr>
+            <th>Course:</th>
+            <td><%= @student.course %></td>            
+          </tr>
+          <tr>
+            <th>Year:</th>
+            <td><%= @student.year %></td>            
+          </tr>
+        </table><hr>
+        <h3>General Information</h3>
+        <table>
+          <tr>
+            <th>Name:</th>
+            <td><%= @student.name %></td>            
+          </tr>
+          <tr>
+            <th>Gender:</th>
+            <td><%= @student.gender %></td>            
+          </tr>
+          <tr>
+            <th>Birthday:</th>
+            <td><%= @student.birthday %></td>            
+          </tr>
+          <tr>
+            <th>Address:</th>
+            <td><%= @student.address %></td>            
+          </tr>
+        </table><hr>
+        <h3>Contact Information</h3>
+        <table>
+          <tr>
+            <th>Email:</th>
+            <td><%= @student.email %></td>            
+          </tr>
+          <tr>
+            <th>Contact no:</th>
+            <td><%= @student.contact_no %></td>            
+          </tr>
+        </table>
+      </div>
+      <div class="col-sm-3">
+        <div class="profile-action">
+          <h4>Action</h4>
+          <a href="/profile/edit"><i class="fas fa-pencil-alt"></i> Edit profile</a><br>
+          <a href="/profile/change_password"><i class="fas fa-cog"></i> Edit password</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

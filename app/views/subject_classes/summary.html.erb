@@ -1,0 +1,309 @@
+<p id="notice"><%= notice %></p>
+
+<div class="classes-show no-radius">
+  <%= render partial: 'class_details', locals: {subject_class: @subject_class} %>
+
+  
+  <hr>
+  <div class="student-list">
+    <h2 style="font-weight: bold">Summary</h2><hr>
+    <h4>Attendance</h4>
+
+      <table class="summary-table">
+        <tr>
+          <th rowspan="2">Name</th> 
+          <th colspan="<%= @subject_class.attendances.count + 2 %>">Attendance</th> 
+        </tr>
+        <tr>
+        <% @subject_class.attendances.each do |attendance| %>
+          <th><%= attendance.date_created.strftime("%b %e") %></th>
+        <% end %>
+        <th>Presents</th>
+        <th>Absents</th>
+        </tr>
+
+          <% if @subject_class.students.count == 0 %>
+            <tr><td colspan="4">NO STUDENTS</td></tr>
+          <% else %>          
+            <% @subject_class.students.order(:name).each do |student| %>
+            <tr>
+              <td><%= link_to student.name, student %></td>
+              <% present = 0%>
+              <% absent = 0%>
+              <% @subject_class.attendances.each do |attendance| %>
+                <td class="center-data">
+                  <% if attendance.attendance_details.where(student_id: student.id).first %>
+                    <i class="fas fa-check text-success"></i>
+                    <% present = present + 1%>
+                  <% else %>
+                    <i class="fas fa-times text-danger"></i>
+                    <% absent = absent + 1 %>
+                  <% end %>
+                </td>
+              <% end %>
+              <td class="center-data"><%= present %></td>
+              <td class="center-data"><%= absent %></td>
+
+            </tr>
+              
+            <% end %>
+          
+          <% end %>
+      </table><hr>
+      <h4>Grades</h4>
+
+      <table class="summary-table">
+        <tr>
+          <th rowspan="2">Name</th> 
+          <th colspan="<%= @class_standing_count + 1 %>">Class Standing </th> 
+          <th colspan="11">Exams </th> 
+        </tr>
+        <tr>
+        <% @subject_class.tests.where("test_type_id = 5 or test_type_id = 6 or test_type_id = 7 or test_type_id = 8 or test_type_id = 9").each do |test| %>
+          <th><%= test.name %></th>
+        <% end %>
+        <th>Grade</th>
+
+        <th>PE</th>
+        <th>PEG</th>
+        <th>ME</th>
+        <th>MEG</th>
+        <th>TMG</th>
+
+        <th>SE</th>
+        <th>SG</th>
+        <th>FE</th>
+        <th>FEG</th>
+        <th>TFG</th>
+
+        <th>FG</th>
+        </tr>
+
+          <% if @subject_class.students.count == 0 %>
+            <tr><td colspan="4">NO STUDENTS</td></tr>
+          <% else %>          
+            <% @subject_class.students.order(:name).each do |student| %>
+            <tr>
+              <td><%= link_to student.name, student %></td>
+              <% cs = 0 %>
+              <% total_score = 0 %>
+              <% score = 0 %>
+              <% @subject_class.tests.where("test_type_id = 5 or test_type_id = 6 or test_type_id = 7 or test_type_id = 8 or test_type_id = 9").each do |test| %>
+                <td class="center-data">
+                  <% if get_percentage_of_score_raw(test, test.test_results.where(student_id: student.id).first.score) > 74 %>
+                    <span class="text-test"><%= test.test_results.where(student_id: student.id).first.score %></span>
+                  <% else %>
+                    <span class="text-danger"><%= test.test_results.where(student_id: student.id).first.score %></span>
+                  <% end %>
+                  <% total_score = total_score + test.no_of_items %>
+                  <% score = score + test.test_results.where(student_id: student.id).first.score %>
+                  
+                </td>
+              <% end %>
+              <td class="center-data">
+                <% if get_final_percentage_cs(total_score, score) > 74 %>
+                  <span class="text-test"><%= get_final_percentage_cs(total_score, score).round(2) %></span>
+                <% else %>
+                  <span class="text-danger"><%= get_final_percentage_cs(total_score, score).round(2) %></span>
+                <% end %>
+                <% cs = get_final_percentage_cs(total_score, score) %>
+              </td>
+              
+
+              <%# prelim %>
+              <% total_score = 0 %>
+              <% prelim_score = 0 %>
+              <% score = 0 %>
+              <% if @subject_class.tests.where("test_type_id = 1").count > 0 %>
+                <% @subject_class.tests.where("test_type_id = 1").each do |test| %>
+                  <td class="center-data">
+                    <% if get_percentage_of_score_raw(test, test.test_results.where(student_id: student.id).first.score) > 74 %>
+                      <span class="text-test"><%= test.test_results.where(student_id: student.id).first.score %></span>
+                    <% else %>
+                      <span class="text-danger"><%= test.test_results.where(student_id: student.id).first.score %></span>
+                    <% end %>
+                    <% total_score = total_score + test.no_of_items %>
+                    <% score = score + test.test_results.where(student_id: student.id).first.score %>
+                    
+                  </td>
+                <% end %>
+              <% else %>
+                <td>NA</td>
+              <% end %>
+              
+
+              <td class="center-data">
+                <% if total_score == 0 %>
+                  NA
+                <% else %>
+                  <% if get_final_percentage_cs(total_score, score) > 74 %>
+                    <span class="text-test"><%= get_final_percentage_cs(total_score, score) %></span>
+                  <% else %>
+                    <span class="text-danger"><%= get_final_percentage_cs(total_score, score) %></span>
+                  <% end %> 
+                <% end %>
+                <% prelim_score = get_final_percentage_cs(total_score, score) %>
+              </td>
+
+
+              <%# midterm %>
+              <% midterm_score = 0%>
+              <% total_score = 0 %>
+              <% score = 0 %>
+              <% if @subject_class.tests.where("test_type_id = 2").count > 0 %>
+                <% @subject_class.tests.where("test_type_id = 2").each do |test| %>
+                  <td class="center-data">
+                    <% if get_percentage_of_score_raw(test, test.test_results.where(student_id: student.id).first.score) > 74 %>
+                      <span class="text-test"><%= test.test_results.where(student_id: student.id).first.score %></span>
+                    <% else %>
+                      <span class="text-danger"><%= test.test_results.where(student_id: student.id).first.score %></span>
+                    <% end %>
+                    <% total_score = total_score + test.no_of_items %>
+                    <% score = score + test.test_results.where(student_id: student.id).first.score %>
+                    
+                  </td>
+                <% end %>
+              <% else %>
+                <td>NA</td>
+              <% end %>
+              
+
+              <td class="center-data">
+                <% if total_score == 0 %>
+                  NA
+                <% else %>
+                  <% if get_final_percentage_cs(total_score, score) > 74 %>
+                    <span class="text-test"><%= get_final_percentage_cs(total_score, score) %></span>
+                  <% else %>
+                    <span class="text-danger"><%= get_final_percentage_cs(total_score, score) %></span>
+                  <% end %>
+                <% end %>
+                <% midterm_score = get_final_percentage_cs(total_score, score) %>
+              </td>
+
+              <td><%# formula mg = (cs*4 + pe*1 + me*2)/7 %>
+                <% cs %>
+                <% prelim_score %>
+                <% midterm_score %>
+                <% mg = ((cs * 4) + (prelim_score * 1) + (midterm_score * 2)) / 7 %>
+                <% if mg > 74 %>
+                  <span style="font-weight: bold" class="text-success">
+                    <%= mg.round(2) %> %
+                  </span>
+                <% else %>
+                  <span style="font-weight: bold" class="text-danger">
+                    <%= mg.round(2) %> %
+                  </span>
+                <% end %>
+              </td>
+
+              <%# Semi %>
+              <% semi_score = 0 %>
+              <% total_score = 0 %>
+              <% score = 0 %>
+              <% if @subject_class.tests.where("test_type_id = 3").count > 0 %>
+                <% @subject_class.tests.where("test_type_id = 3").each do |test| %>
+                  <td class="center-data">
+                    <% if get_percentage_of_score_raw(test, test.test_results.where(student_id: student.id).first.score) > 74 %>
+                      <span class="text-test"><%= test.test_results.where(student_id: student.id).first.score %></span>
+                    <% else %>
+                      <span class="text-danger"><%= test.test_results.where(student_id: student.id).first.score %></span>
+                    <% end %>
+                    <% total_score = total_score + test.no_of_items %>
+                    <% score = score + test.test_results.where(student_id: student.id).first.score %>
+                    
+                  </td>
+                <% end %>
+              <% else %>
+                <td>NA</td>
+              <% end %>
+              
+
+              <td class="center-data">
+                <% if total_score == 0 %>
+                  NA
+                <% else %>
+                  <% if get_final_percentage_cs(total_score, score) > 74 %>
+                    <span class="text-test"><%= get_final_percentage_cs(total_score, score) %></span>
+                  <% else %>
+                    <span class="text-danger"><%= get_final_percentage_cs(total_score, score) %></span>
+                  <% end %>
+                <% end %><% semi_score = get_final_percentage_cs(total_score, score) %>
+              </td>
+
+
+              <%# final %>
+              <% total_score = 0 %>
+              <% score = 0 %>
+              <% final_score = 0%>
+              <% if @subject_class.tests.where("test_type_id = 4").count > 0 %>
+                <% @subject_class.tests.where("test_type_id = 4").each do |test| %>
+                  <td class="center-data">
+                    <% if get_percentage_of_score_raw(test, test.test_results.where(student_id: student.id).first.score) > 74 %>
+                      <span class="text-test"><%= test.test_results.where(student_id: student.id).first.score %></span>
+                    <% else %>
+                      <span class="text-danger"><%= test.test_results.where(student_id: student.id).first.score %></span>
+                    <% end %>
+                    <% total_score = total_score + test.no_of_items %>
+                    <% score = score + test.test_results.where(student_id: student.id).first.score %>
+                    
+                  </td>
+                <% end %>
+              <% else %>
+                <td>NA</td>
+              <% end %>
+              
+
+              <td class="center-data">
+                <% if total_score == 0 %>
+                  NA
+                <% else %>
+                  <% if get_final_percentage_cs(total_score, score) > 74 %>
+                    <span class="text-test"><%= get_final_percentage_cs(total_score, score) %></span>
+                  <% else %>
+                    <span class="text-danger"><%= get_final_percentage_cs(total_score, score) %></span>
+                  <% end %>
+                <% end %>
+                <% final_score = get_final_percentage_cs(total_score, score) %>
+              </td>
+
+              <td><%# formula fg = (cs*4 + se*1 + fe*2)/7 %>
+                <% cs %>
+                <% semi_score %>
+                <% final_score %>
+                <% fg = ((cs * 4) + (semi_score * 1) + (final_score * 2)) / 7 %>
+                <% if fg > 74 %>
+                  <span style="font-weight: bold" class="text-success">
+                    <%= fg.round(2) %> %
+                  </span>
+                <% else %>
+                  <span style="font-weight: bold" class="text-danger">
+                    <%= fg.round(2) %> %
+                  </span>
+                <% end %>
+              </td>
+
+              <td><%# formula fg = mg + 2 tfg / 3 %>
+                <% mg %>
+                <% fg %>
+                <% g = (mg + (2 * fg))/ 3 %>
+                <% if g > 74 %>
+                  <span style="font-weight: bold" class="text-success">
+                    <%= g.round(2) %> %
+                  </span>
+                <% else %>
+                  <span style="font-weight: bold" class="text-danger">
+                    <%= g.round(2) %> %
+                  </span>
+                <% end %>
+              </td>
+              
+            </tr>
+              
+            <% end %>
+          
+          <% end %>
+      </table><hr>
+  </div>
+</div>
+

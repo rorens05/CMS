@@ -19,5 +19,6 @@
 //= require jquery.turbolinks
 //= require Chart.bundle
 //= require chartkick
+//= require moment
 //= require activestorage
 //= require_tree .

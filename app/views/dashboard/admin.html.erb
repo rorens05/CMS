@@ -19,8 +19,8 @@
   </div>
 
   <div class="col-sm-3">
-    <p>Total Students</p>
-    <h2><%= Student.all.count %></h2>  
+    <p>TOTAL COURSES</p>
+    <h2><%= 7 %></h2>  
   </div>
 </div>
 
@@ -33,7 +33,7 @@
   </div>
   <div class="col-lg-4 ">
     <div class="container dashboard-items">
-      <h4>Student Report per Course</h4><hr>
+      <h4>Student Report per Year</h4><hr>
       <% customized = Student.group(:year).count %>
       <% customized = customized.to_h %>
       <% customized["1st year"] = customized.delete 1 %>

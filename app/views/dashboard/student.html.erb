@@ -1,3 +1,58 @@
-<h1>Dashboard#student</h1>
-<p>Find me in app/views/dashboard/student.html.erb</p>
 <p id="notice"><%= notice %></p>
+<div class="student-dashboard container-fluid">
+  <%= image_tag '/images/cslogo.png' %>
+  <h1>University of Luzon</h1>
+  <h2>College of Computer Studies</h2>
+
+</div>
+
+<div class="student-dashboard container-fluid">
+  <div class="row counts">
+    <div class="col-sm-4">
+      <p>CLASSES</p>
+      <h2><%= ClassEnrollment.where(student_id: session[:id]).count %></h2>  
+      <small>Number of your classes this semister</small>  
+    </div>
+
+    <div class="col-sm-4">
+      <p>SCHOOL YEAR</p>
+      <h2><%= "2018-2019" %></h2>   
+      <small>Current School Year</small>  
+    </div>
+
+    <div class="col-sm-4">
+      <p>SEMESTER</p>
+      <h2><%= "2nd Sem" %></h2>  
+      <small>Current Semister</small>  
+    </div>
+  </div>
+</div>
+
+<div class="student-dashboard container-fluid">
+  <h3>Recent Tests</h3><hr>
+
+    <div class="container-fluid">
+      <table class="index">
+        <thead>
+          <th>Test</th>
+          <th>Subject</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Score</th>
+          <th>Number of Items</th>
+        </thead>
+        <% cs = 0 %>
+        <% total = 0%>
+        <% TestResult.where(student_id: session[:id]).order("updated_at DESC").each do |t| %>
+          <tr>
+            <td><%= t.test.name %></td>
+            <td><%= t.test.subject_class.subject.name %></td>
+            <td><%= t.updated_at.strftime("%b %e") %></td>
+            <td><%= t.test.status %></td>
+            <td><%= t.score%></td>
+            <td><%= t.test.no_of_items %></td>
+          </tr>
+        <% end %> 
+      </table>
+    </div> 
+</div>
